@@ -1,0 +1,122 @@
+@startuml
+
+interface IPerson
+{
+    Name : string
+    Birthday : DateTime
+}
+
+enum Rank 
+{
+    Kyu10
+    KyuInt9
+    Kyu9
+    KyuInt8
+    Kyu8
+    KyuInt7
+    Kyu7
+    KyuInt6
+    Kyu6
+    KyuInt5
+    Kyu5
+    KyuInt4
+    Kyu4
+    KyuInt3
+    Kyu3
+    KyuInt2
+    Kyu2
+    KyuInt1
+    Kyu1
+    DanInt1
+    Dan1
+    Dan2
+    Dan3
+    Dan4
+    Dan5
+    Dan6
+    Dan7
+    Dan8
+    Dan9
+    Dan10
+}
+
+interface IKarateka
+{
+    Rank : Rank 
+}
+
+interface IInstructor
+{
+    LastSafeSportTestData : DateTime
+    LastBackgroundCheckDate : DateTime
+    Timesheet : List<Tuple<DateTime, TimeSpan>>
+}
+
+class Lesson
+{
+    Instructor : IInstructor
+    Day : DateTime
+    Class : IClass
+}
+
+interface IRequirement
+{
+    Name : string
+    Passed : bool
+}
+
+
+interface IStudent
+{
+    Attendance : List<Lesson>
+    Requirements : List<IRequirement>
+}
+
+enum ClassType
+{
+    KarateTots
+    KarateBeginnerNovice
+    KarateIntermediate
+    KarateAdvanced
+    Kobudo
+    SelfDefense
+    Fitness
+    Maktan
+}
+
+interface IDojo
+{
+    Address : CivicAddress
+    Name : string
+}
+
+interface IClass
+{
+    HeadInstructors : List<IInstructor>
+    AssistantInstructors : List<IInstructor>
+    Students : List<IStudent>
+    DaysOfWeek : List<DayOfWeek>
+    TimeOfDay : TimeSpan
+    SkillLevel : ClassType
+    Name : string
+    Dojo : IDojo
+}
+
+IKarateka --|> IPerson
+IKarateka "0..n" *-- "1" Rank
+
+IInstructor --|> IKarateka
+
+IStudent --|> IKarateka
+IStudent "1" o-- "0..n" Lesson
+IStudent "1" *-- "1..n" IRequirement
+
+IClass "0..n" *-- "1..m" IInstructor
+IClass "0..n" o-- "0..m" IStudent
+IClass "0..n" *-- "1" IDojo
+IClass "0..n" *-- "1" ClassType
+
+Lesson "0..n" *-- "1" IClass
+Lesson "0..n" *-- "1" IInstructor
+
+@enduml
