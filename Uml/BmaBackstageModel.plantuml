@@ -45,18 +45,21 @@ interface IKarateka
     Rank : Rank 
 }
 
+interface IEmployee
+{
+    Timesheet : List<Tuple<DateTime, TimeSpan>>
+}
+
 interface IInstructor
 {
     LastSafeSportTestData : DateTime
     LastBackgroundCheckDate : DateTime
-    Timesheet : List<Tuple<DateTime, TimeSpan>>
 }
 
 class Lesson
 {
     Instructor : IInstructor
     Day : DateTime
-    Class : IClass
 }
 
 interface IRequirement
@@ -100,12 +103,16 @@ interface IClass
     SkillLevel : ClassType
     Name : string
     Dojo : IDojo
+    Lessons : List<Lesson>
 }
+
+IEmployee --|> IPerson
 
 IKarateka --|> IPerson
 IKarateka "0..n" *-- "1" Rank
 
 IInstructor --|> IKarateka
+IInstructor --|> IEmployee
 
 IStudent --|> IKarateka
 IStudent "1" o-- "0..n" Lesson
@@ -115,8 +122,8 @@ IClass "0..n" *-- "1..m" IInstructor
 IClass "0..n" o-- "0..m" IStudent
 IClass "0..n" *-- "1" IDojo
 IClass "0..n" *-- "1" ClassType
+IClass "1" o-- "0..m" Lesson
 
-Lesson "0..n" *-- "1" IClass
 Lesson "0..n" *-- "1" IInstructor
 
 @enduml
