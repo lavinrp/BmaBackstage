@@ -1,48 +1,70 @@
 @startuml
 
+
+interface IRequirement
+{
+    Name : string
+    Passed : bool
+    double CalculateCompletionPercent()
+}
+
+class AttendanceRequirement
+{
+    Lessons : List<Lesson>
+}
+
+class ManualApprovalRequirement
+{
+}
+
+class AgeRequirement
+{
+}
+
+class ProgressionStage
+{
+    Name : string
+    Requirements : List<IRequirement>
+    bool IsComplete()
+}
+
+interface IProgression
+{
+    Name : string
+    Stages : List<ProgressionStage>
+    CurrentStage : int
+    ProgressionStage GetCurrentStage()
+    double CalculateCompletionPercent()
+}
+
+interface IProgressionStageArchetype
+{
+    Name : string
+    Requirements : List<IRequirement>
+    ProgressionStage CreateProgressionStage()
+}
+
+interface IProgressionArchetype
+{
+    Name : string
+    Stages : List<IProgressionStageArchetype>
+    IProgression CreateProgression()
+}
+
+class EmergencyContact
+{
+    Name : string
+    PhoneNumber : string
+    Email : string
+    Relationship : string
+    Notes : string
+}
+
 interface IPerson
 {
     Name : string
     Birthday : DateTime
-}
-
-enum Rank 
-{
-    Kyu10
-    KyuInt9
-    Kyu9
-    KyuInt8
-    Kyu8
-    KyuInt7
-    Kyu7
-    KyuInt6
-    Kyu6
-    KyuInt5
-    Kyu5
-    KyuInt4
-    Kyu4
-    KyuInt3
-    Kyu3
-    KyuInt2
-    Kyu2
-    KyuInt1
-    Kyu1
-    DanInt1
-    Dan1
-    Dan2
-    Dan3
-    Dan4
-    Dan5
-    Dan6
-    Dan7
-    Dan8
-    Dan9
-    Dan10
-}
-
-interface IKarateka
-{
-    Rank : Rank 
+    EmergencyContacts : List<EmergencyContact>
 }
 
 interface IEmployee
@@ -50,9 +72,14 @@ interface IEmployee
     Timesheet : List<Tuple<DateTime, TimeSpan>>
 }
 
+interface IMartialArtist
+{
+    Progressions : List<IProgression>
+}
+
 interface IInstructor
 {
-    LastSafeSportTestData : DateTime
+    LastSafeSportTestDate : DateTime
     LastBackgroundCheckDate : DateTime
 }
 
@@ -62,29 +89,12 @@ class Lesson
     Day : DateTime
 }
 
-interface IRequirement
-{
-    Name : string
-    Passed : bool
-}
-
-
 interface IStudent
 {
-    Attendance : List<Lesson>
-    Requirements : List<IRequirement>
-}
-
-enum ClassType
-{
-    KarateTots
-    KarateBeginnerNovice
-    KarateIntermediate
-    KarateAdvanced
-    Kobudo
-    SelfDefense
-    Fitness
-    Maktan
+    ContractStart : DateTime
+    ContractEnd : DateTime
+    SpecialNeeds : List<string>
+    Notes : List<string>
 }
 
 interface IDojo
@@ -100,29 +110,40 @@ interface IClass
     Students : List<IStudent>
     DaysOfWeek : List<DayOfWeek>
     TimeOfDay : TimeSpan
-    SkillLevel : ClassType
+    ProgressionArchetypes : List<IProgressionArchetype>
     Name : string
     Dojo : IDojo
     Lessons : List<Lesson>
 }
 
-IEmployee --|> IPerson
+IMartialArtist ..|> IPerson
+IEmployee ..|> IPerson
+IInstructor ..|> IEmployee
+IInstructor ..|> IMartialArtist
+IStudent ..|> IMartialArtist
 
-IKarateka --|> IPerson
-IKarateka "0..n" *-- "1" Rank
+AttendanceRequirement ..|> IRequirement
+ManualApprovalRequirement ..|> IRequirement
+AgeRequirement ..|> IRequirement
 
-IInstructor --|> IKarateka
-IInstructor --|> IEmployee
+IProgressionStageArchetype "1" *-- "1..n" IRequirement
+IProgressionArchetype "1" *-- "1..n" IProgressionStageArchetype
+IProgressionArchetype -- IProgression : Creates
+IProgressionStageArchetype -- ProgressionStage : Creates
 
-IStudent --|> IKarateka
-IStudent "1" o-- "0..n" Lesson
-IStudent "1" *-- "1..n" IRequirement
+ProgressionStage "1" *-- "1..n" IRequirement
+IProgression "1" *-- "1..n" ProgressionStage
+AttendanceRequirement "0..m" o-- "0..n" Lesson
+
+IPerson "1..n" *-- "0..m" EmergencyContact
+
+IMartialArtist "1" *-- "0..n" IProgression
 
 IClass "0..n" *-- "1..m" IInstructor
 IClass "0..n" o-- "0..m" IStudent
 IClass "0..n" *-- "1" IDojo
-IClass "0..n" *-- "1" ClassType
 IClass "1" o-- "0..m" Lesson
+IClass "1" o-- "0..m" IProgressionArchetype
 
 Lesson "0..n" *-- "1" IInstructor
 
