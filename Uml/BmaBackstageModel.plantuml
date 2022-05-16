@@ -21,7 +21,7 @@ class AgeRequirement
 {
 }
 
-interface IProgressionStage
+class ProgressionStage
 {
     Name : string
     Requirements : List<IRequirement>
@@ -31,9 +31,9 @@ interface IProgressionStage
 interface IProgression
 {
     Name : string
-    Stages : List<IProgressionStage>
+    Stages : List<ProgressionStage>
     CurrentStage : int
-    IProgressionStage GetCurrentStage()
+    ProgressionStage GetCurrentStage()
     double CalculateCompletionPercent()
 }
 
@@ -129,11 +129,13 @@ AgeRequirement ..|> IRequirement
 IProgressionStageArchetype "1" *-- "1..n" IRequirement
 IProgressionArchetype "1" *-- "1..n" IProgressionStageArchetype
 IProgressionArchetype -- IProgression : Creates
-IProgressionStageArchetype -- IProgressionStage : Creates
+IProgressionStageArchetype -- ProgressionStage : Creates
 
-IProgressionStage "1" *-- "1..n" IRequirement
-IProgression "1" *-- "1..n" IProgressionStage
+ProgressionStage "1" *-- "1..n" IRequirement
+IProgression "1" *-- "1..n" ProgressionStage
 AttendanceRequirement "0..m" o-- "0..n" Lesson
+
+IPerson "1..n" *-- "0..m" EmergencyContact
 
 IMartialArtist "1" *-- "0..n" IProgression
 
