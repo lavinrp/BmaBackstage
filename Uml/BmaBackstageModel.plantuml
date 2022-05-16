@@ -28,13 +28,14 @@ class ProgressionStage
     bool IsReadyForNextStage()
 }
 
-class Progression
+interface IProgression
 {
     Id : Guid
     Name : string
     Stages : List<ProgressionStage>
-    ProgressionStage GetCurrentStage()
     CurrentStage : int
+    ProgressionStage GetCurrentStage()
+    double CalculateCompletionPercent()
 }
 
 interface IPerson
@@ -50,7 +51,7 @@ interface IEmployee
 
 interface IMartialArtist
 {
-    Progressions : List<Progression>
+    Progressions : List<IProgression>
 }
 
 interface IInstructor
@@ -103,10 +104,10 @@ ManualApprovalRequirement ..|> IRequirement
 AgeRequirement ..|> IRequirement
 
 ProgressionStage "1" *-- "1..n" IRequirement
-Progression "1" *-- "1..n" ProgressionStage
+IProgression "1" *-- "1..n" ProgressionStage
 AttendanceRequirement "0..m" o-- "0..n" Lesson
 
-IMartialArtist "1" *-- "0..n" Progression
+IMartialArtist "1" *-- "0..n" IProgression
 
 IClass "0..n" *-- "1..m" IInstructor
 IClass "0..n" o-- "0..m" IStudent
