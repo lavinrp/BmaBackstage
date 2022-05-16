@@ -10,9 +10,14 @@ interface IRequirement
 
 class AttendanceRequirement
 {
+    Lessons : List<Lesson>
 }
 
 class ManualApprovalRequirement
+{
+}
+
+class AgeRequirement
 {
 }
 
@@ -43,9 +48,14 @@ interface IEmployee
     Timesheet : List<Tuple<DateTime, TimeSpan>>
 }
 
+interface IMartialArtist
+{
+    Progressions : List<Progression>
+}
+
 interface IInstructor
 {
-    LastSafeSportTestData : DateTime
+    LastSafeSportTestDate : DateTime
     LastBackgroundCheckDate : DateTime
 }
 
@@ -59,8 +69,6 @@ interface IStudent
 {
     ContractStart : DateTime
     ContractEnd : DateTime
-    Progressions : List<Progression>
-    Lessons : List<Lesson>
     SpecialNeeds : List<string>
     Notes : List<string>
 }
@@ -84,18 +92,21 @@ interface IClass
     Lessons : List<Lesson>
 }
 
+IMartialArtist ..|> IPerson
 IEmployee ..|> IPerson
 IInstructor ..|> IEmployee
-IStudent ..|> IPerson
+IInstructor ..|> IMartialArtist
+IStudent ..|> IMartialArtist
 
 AttendanceRequirement ..|> IRequirement
 ManualApprovalRequirement ..|> IRequirement
+AgeRequirement ..|> IRequirement
 
 ProgressionStage "1" *-- "1..n" IRequirement
 Progression "1" *-- "1..n" ProgressionStage
+AttendanceRequirement "0..m" o-- "0..n" Lesson
 
-IStudent "1" o-- "0..n" Lesson
-IStudent "1" *-- "0..n" Progression
+IMartialArtist "1" *-- "0..n" Progression
 
 IClass "0..n" *-- "1..m" IInstructor
 IClass "0..n" o-- "0..m" IStudent
