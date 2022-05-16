@@ -21,27 +21,50 @@ class AgeRequirement
 {
 }
 
-class ProgressionStage
+interface IProgressionStage
 {
     Name : string
     Requirements : List<IRequirement>
-    bool IsReadyForNextStage()
+    bool IsComplete()
 }
 
 interface IProgression
 {
-    Id : Guid
     Name : string
-    Stages : List<ProgressionStage>
+    Stages : List<IProgressionStage>
     CurrentStage : int
-    ProgressionStage GetCurrentStage()
+    IProgressionStage GetCurrentStage()
     double CalculateCompletionPercent()
+}
+
+interface IProgressionStageArchetype
+{
+    Name : string
+    Requirements : List<IRequirement>
+    ProgressionStage CreateProgressionStage()
+}
+
+interface IProgressionArchetype
+{
+    Name : string
+    Stages : List<IProgressionStageArchetype>
+    IProgression CreateProgression()
+}
+
+class EmergencyContact
+{
+    Name : string
+    PhoneNumber : string
+    Email : string
+    Relationship : string
+    Notes : string
 }
 
 interface IPerson
 {
     Name : string
     Birthday : DateTime
+    EmergencyContacts : List<EmergencyContact>
 }
 
 interface IEmployee
@@ -87,7 +110,7 @@ interface IClass
     Students : List<IStudent>
     DaysOfWeek : List<DayOfWeek>
     TimeOfDay : TimeSpan
-    Progression : Guid
+    ProgressionArchetypes : List<IProgressionArchetype>
     Name : string
     Dojo : IDojo
     Lessons : List<Lesson>
@@ -103,8 +126,13 @@ AttendanceRequirement ..|> IRequirement
 ManualApprovalRequirement ..|> IRequirement
 AgeRequirement ..|> IRequirement
 
-ProgressionStage "1" *-- "1..n" IRequirement
-IProgression "1" *-- "1..n" ProgressionStage
+IProgressionStageArchetype "1" *-- "1..n" IRequirement
+IProgressionArchetype "1" *-- "1..n" IProgressionStageArchetype
+IProgressionArchetype -- IProgression : Creates
+IProgressionStageArchetype -- IProgressionStage : Creates
+
+IProgressionStage "1" *-- "1..n" IRequirement
+IProgression "1" *-- "1..n" IProgressionStage
 AttendanceRequirement "0..m" o-- "0..n" Lesson
 
 IMartialArtist "1" *-- "0..n" IProgression
@@ -113,6 +141,7 @@ IClass "0..n" *-- "1..m" IInstructor
 IClass "0..n" o-- "0..m" IStudent
 IClass "0..n" *-- "1" IDojo
 IClass "1" o-- "0..m" Lesson
+IClass "1" o-- "0..m" IProgressionArchetype
 
 Lesson "0..n" *-- "1" IInstructor
 
