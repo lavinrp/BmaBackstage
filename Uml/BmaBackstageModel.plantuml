@@ -1,0 +1,150 @@
+@startuml
+
+
+interface IRequirement
+{
+    Name : string
+    Passed : bool
+    double CalculateCompletionPercent()
+}
+
+class AttendanceRequirement
+{
+    Lessons : List<Lesson>
+}
+
+class ManualApprovalRequirement
+{
+}
+
+class AgeRequirement
+{
+}
+
+class ProgressionStage
+{
+    Name : string
+    Requirements : List<IRequirement>
+    bool IsComplete()
+}
+
+interface IProgression
+{
+    Name : string
+    Stages : List<ProgressionStage>
+    CurrentStage : int
+    ProgressionStage GetCurrentStage()
+    double CalculateCompletionPercent()
+}
+
+interface IProgressionStageArchetype
+{
+    Name : string
+    Requirements : List<IRequirement>
+    ProgressionStage CreateProgressionStage()
+}
+
+interface IProgressionArchetype
+{
+    Name : string
+    Stages : List<IProgressionStageArchetype>
+    IProgression CreateProgression()
+}
+
+class EmergencyContact
+{
+    Name : string
+    PhoneNumber : string
+    Email : string
+    Relationship : string
+    Notes : string
+}
+
+interface IPerson
+{
+    Name : string
+    Birthday : DateTime
+    EmergencyContacts : List<EmergencyContact>
+}
+
+interface IEmployee
+{
+    Timesheet : List<Tuple<DateTime, TimeSpan>>
+}
+
+interface IMartialArtist
+{
+    Progressions : List<IProgression>
+}
+
+interface IInstructor
+{
+    LastSafeSportTestDate : DateTime
+    LastBackgroundCheckDate : DateTime
+}
+
+class Lesson
+{
+    Instructor : IInstructor
+    Day : DateTime
+}
+
+interface IStudent
+{
+    ContractStart : DateTime
+    ContractEnd : DateTime
+    SpecialNeeds : List<string>
+    Notes : List<string>
+}
+
+interface IDojo
+{
+    Address : CivicAddress
+    Name : string
+}
+
+interface IClass
+{
+    HeadInstructors : List<IInstructor>
+    AssistantInstructors : List<IInstructor>
+    Students : List<IStudent>
+    DaysOfWeek : List<DayOfWeek>
+    TimeOfDay : TimeSpan
+    ProgressionArchetypes : List<IProgressionArchetype>
+    Name : string
+    Dojo : IDojo
+    Lessons : List<Lesson>
+}
+
+IMartialArtist ..|> IPerson
+IEmployee ..|> IPerson
+IInstructor ..|> IEmployee
+IInstructor ..|> IMartialArtist
+IStudent ..|> IMartialArtist
+
+AttendanceRequirement ..|> IRequirement
+ManualApprovalRequirement ..|> IRequirement
+AgeRequirement ..|> IRequirement
+
+IProgressionStageArchetype "1" *-- "1..n" IRequirement
+IProgressionArchetype "1" *-- "1..n" IProgressionStageArchetype
+IProgressionArchetype -- IProgression : Creates
+IProgressionStageArchetype -- ProgressionStage : Creates
+
+ProgressionStage "1" *-- "1..n" IRequirement
+IProgression "1" *-- "1..n" ProgressionStage
+AttendanceRequirement "0..m" o-- "0..n" Lesson
+
+IPerson "1..n" *-- "0..m" EmergencyContact
+
+IMartialArtist "1" *-- "0..n" IProgression
+
+IClass "0..n" *-- "1..m" IInstructor
+IClass "0..n" o-- "0..m" IStudent
+IClass "0..n" *-- "1" IDojo
+IClass "1" o-- "0..m" Lesson
+IClass "1" o-- "0..m" IProgressionArchetype
+
+Lesson "0..n" *-- "1" IInstructor
+
+@enduml
