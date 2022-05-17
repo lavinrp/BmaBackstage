@@ -12,14 +12,9 @@ namespace BmaBackstage.Domain.Entities
     public interface IStudent : IMartialArtist
     {
         /// <summary>
-        /// Start date of last contract
+        /// All contracts on file for student
         /// </summary>
-        DateTime ContractStart { get; set; }
-
-        /// <summary>
-        /// End date of last contract
-        /// </summary>
-        DateTime ContractEnd { get; set; }
+        List<StudentContract> Contracts { get; set; }
 
         /// <summary>
         /// Special needs that should be understood by instructors
