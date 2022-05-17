@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    interface IProgression
+    public interface IProgression
     {
         string Name { get; }
         List<ProgressionStage> Stages { get; }

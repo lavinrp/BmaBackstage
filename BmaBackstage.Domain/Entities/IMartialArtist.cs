@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    interface IMartialArtist
+    public interface IMartialArtist
     {
         List<IProgression> Progressions { get; }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    interface IEmployee
+    public interface IEmployee
     {
         List<TimeSheetEntry> TimeSheet { get; }
     }

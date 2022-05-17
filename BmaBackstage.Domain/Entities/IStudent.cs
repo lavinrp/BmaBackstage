@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    interface IStudent : IMartialArtist
+    public interface IStudent : IMartialArtist
     {
         DateTime ContractStart { get; set; }
         DateTime ContractEnd { get; set; }

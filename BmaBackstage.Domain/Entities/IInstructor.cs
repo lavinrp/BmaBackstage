@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    interface IInstructor : IEmployee, IMartialArtist 
+    public interface IInstructor : IEmployee, IMartialArtist 
     {
         DateTime LastSafeSportTestDate { get; set; }
         DateTime LastBackgroundCheckDate { get; set; }

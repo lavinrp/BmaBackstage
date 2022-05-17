@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    public class TimeSheetEntry
+    public class Lesson
     {
-        public TimeSheetEntry(DateTime day, TimeSpan duration)
+        public Lesson(IInstructor instructor, DateTime day)
         {
+            Instructor = instructor;
             Day = day;
-            Duration = duration;
         }
+        public IInstructor Instructor { get; private set; }
         public DateTime Day { get; private set; }
-        public TimeSpan Duration { get; private set; }
     }
 }

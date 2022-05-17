@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    interface IDojo
+    public interface IDojo
     {
         string Address { get; }
         string Name { get; }

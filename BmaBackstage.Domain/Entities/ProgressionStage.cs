@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    class ProgressionStage
+    public class ProgressionStage
     {
-        ProgressionStage(string name) : this(name, new List<IRequirement>())
+        public ProgressionStage(string name) : this(name, new List<IRequirement>())
         {
         }
 
-        ProgressionStage(string name, List<IRequirement> requirements)
+        public ProgressionStage(string name, List<IRequirement> requirements)
         {
             Name = name;
             Requirements = requirements;
@@ -20,9 +20,9 @@ namespace BmaBackstage.Domain.Entities
 
         public string Name { get; private set; }
         public List<IRequirement> Requirements { get; private set; }
-        bool IsComplete()
+        public bool IsComplete()
         {
-            return Requirements.All(x => x.Passed);
+            return Requirements.All(x => x.HasPassed());
         }
     }
 }

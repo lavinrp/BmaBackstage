@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Domain.Entities
 {
-    class EmergencyContact
+    /// <summary>
+    /// Emergency contact information
+    /// </summary>
+    public class EmergencyContact
     {
         public string Name { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
