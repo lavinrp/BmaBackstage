@@ -147,6 +147,7 @@ IProgressionStageArchetype -- ProgressionStage : Creates
 ProgressionStage "1" *-- "1..n" IRequirement
 IProgression "1" *-- "1..n" ProgressionStage
 AttendanceRequirement "0..m" o-- "0..n" Lesson
+AgeRequirement "0..n" *-- "1" IPerson
 
 IPerson "1..n" *-- "0..m" EmergencyContact
 IMartialArtist "1" *-- "0..n" IProgression
