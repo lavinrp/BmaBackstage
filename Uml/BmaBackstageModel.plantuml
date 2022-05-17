@@ -4,7 +4,7 @@
 interface IRequirement
 {
     Name : string
-    Passed : bool
+    bool HasPassed()
     double CalculateCompletionPercent()
 }
 
@@ -32,7 +32,7 @@ interface IProgression
 {
     Name : string
     Stages : List<ProgressionStage>
-    CurrentStage : int
+    CurrentStageNumber : int
     ProgressionStage GetCurrentStage()
     double CalculateCompletionPercent()
 }
@@ -67,9 +67,15 @@ interface IPerson
     EmergencyContacts : List<EmergencyContact>
 }
 
+class TimeSheetEntry
+{
+    Day : DateTime
+    Duration : TimeSpan
+}
+
 interface IEmployee
 {
-    Timesheet : List<Tuple<DateTime, TimeSpan>>
+    Timesheet : List<TimeSheetEntry>
 }
 
 interface IMartialArtist
@@ -89,17 +95,22 @@ class Lesson
     Day : DateTime
 }
 
+class StudentContract
+{
+    ContractStartDate : DateTime
+    ContractEndDate : DateTime
+}
+
 interface IStudent
 {
-    ContractStart : DateTime
-    ContractEnd : DateTime
+    Contracts : List<StudentContract>
     SpecialNeeds : List<string>
     Notes : List<string>
 }
 
 interface IDojo
 {
-    Address : CivicAddress
+    Address : string
     Name : string
 }
 
@@ -126,6 +137,8 @@ AttendanceRequirement ..|> IRequirement
 ManualApprovalRequirement ..|> IRequirement
 AgeRequirement ..|> IRequirement
 
+IEmployee "1" o-- "0..n" TimeSheetEntry
+
 IProgressionStageArchetype "1" *-- "1..n" IRequirement
 IProgressionArchetype "1" *-- "1..n" IProgressionStageArchetype
 IProgressionArchetype -- IProgression : Creates
@@ -134,10 +147,11 @@ IProgressionStageArchetype -- ProgressionStage : Creates
 ProgressionStage "1" *-- "1..n" IRequirement
 IProgression "1" *-- "1..n" ProgressionStage
 AttendanceRequirement "0..m" o-- "0..n" Lesson
+AgeRequirement "0..n" *-- "1" IPerson
 
 IPerson "1..n" *-- "0..m" EmergencyContact
-
 IMartialArtist "1" *-- "0..n" IProgression
+IStudent "1" *-- "0..n" StudentContract
 
 IClass "0..n" *-- "1..m" IInstructor
 IClass "0..n" o-- "0..m" IStudent
