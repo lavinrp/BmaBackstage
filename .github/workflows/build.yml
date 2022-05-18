@@ -1,4 +1,4 @@
-name: quality_check
+name: build
 
 on:
   push:
