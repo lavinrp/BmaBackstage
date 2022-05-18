@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities
 {
     /// <summary>
     /// Represents a scheduled set of lessons.
@@ -26,7 +20,7 @@ namespace BmaBackstage.Domain.Entities
         /// Students regularly taking the class
         /// </summary>
         List<IStudent> Students { get; set; }
-        
+
         /// <summary>
         /// The days that the class takes place each week
         /// </summary>

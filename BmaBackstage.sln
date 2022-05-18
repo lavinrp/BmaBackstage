@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BmaBackstage.Ui.BlazorServer", "BmaBackstage.Ui.BlazorServer\BmaBackstage.Ui.BlazorServer.csproj", "{58DD04CF-4C58-46B3-81E5-7B909B953033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BmaBackstage.Domain", "BmaBackstage.Domain\BmaBackstage.Domain.csproj", "{6F003596-32CD-4BD8-915D-96DCE4F6C6DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BmaBackstage.Domain", "BmaBackstage.Domain\BmaBackstage.Domain.csproj", "{6F003596-32CD-4BD8-915D-96DCE4F6C6DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BmaBackstage.Infrastructure", "BmaBackstage.Infrastructure\BmaBackstage.Infrastructure.csproj", "{9B7E041C-7C5A-4F94-8E98-38A05B66F2F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BmaBackstage.Infrastructure", "BmaBackstage.Infrastructure\BmaBackstage.Infrastructure.csproj", "{9B7E041C-7C5A-4F94-8E98-38A05B66F2F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BmaBackstage", "Test.BmaBackstage\Test.BmaBackstage.csproj", "{EA8C8258-C168-4235-920F-E5763A2458C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9B7E041C-7C5A-4F94-8E98-38A05B66F2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7E041C-7C5A-4F94-8E98-38A05B66F2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7E041C-7C5A-4F94-8E98-38A05B66F2F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA8C8258-C168-4235-920F-E5763A2458C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8C8258-C168-4235-920F-E5763A2458C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8C8258-C168-4235-920F-E5763A2458C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8C8258-C168-4235-920F-E5763A2458C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
