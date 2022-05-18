@@ -12,24 +12,13 @@ namespace BmaBackstage.Domain.Entities
     public class TimeSheetEntry
     {
         /// <summary>
-        /// Construct a TimeSheetEntry for a specified day with a specified duration of work
-        /// </summary>
-        /// <param name="day"></param>
-        /// <param name="duration"></param>
-        public TimeSheetEntry(DateTime day, TimeSpan duration)
-        {
-            Day = day;
-            Duration = duration;
-        }
-
-        /// <summary>
         /// Day that the work took place
         /// </summary>
-        public DateTime Day { get; private set; }
+        public DateTime Day { get; set; }
 
         /// <summary>
         /// Duration of the work
         /// </summary>
-        public TimeSpan Duration { get; private set; }
+        public TimeSpan Duration { get; set; }
     }
 }

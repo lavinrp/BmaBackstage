@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities
 {
     /// <summary>
     /// Template for a typical progression.
@@ -22,7 +16,7 @@ namespace BmaBackstage.Domain.Entities
         /// <summary>
         /// Typical stages of the typical progression
         /// </summary>
-        List <IProgressionStageArchetype> Stages { get; }
+        List<IProgressionStageArchetype> Stages { get; }
 
         /// <summary>
         /// Create a progression based on this archetype

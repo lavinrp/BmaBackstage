@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities
 {
     /// <summary>
     /// Any skill / rank that can be progressed through training
@@ -21,7 +15,7 @@ namespace BmaBackstage.Domain.Entities
         /// </summary>
         /// <example>Stages[0]: WhiteBelt, Stages[1]: RedBelt, Stages[2]: OrangeBelt</example>
         List<ProgressionStage> Stages { get; }
-        
+
         /// <summary>
         /// Index of current active stage
         /// </summary>

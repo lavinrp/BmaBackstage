@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities
 {
     /// <summary>
     /// Instructor of any BMA class.
     /// </summary>
-    public interface IInstructor : IEmployee, IMartialArtist 
+    public interface IInstructor : IEmployee, IMartialArtist
     {
         /// <summary>
         /// Time of last passed safe sport test

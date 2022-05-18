@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities
 {
     /// <summary>
     /// Tracks minimum attendance required to complete a ProgressionStage
@@ -44,8 +38,8 @@ namespace BmaBackstage.Domain.Entities
         /// Checks if the attendance requirement has been met.
         /// </summary>
         /// <returns>Returns true if the number of lessons is greater than the required lesson count. False otherwise. </returns>
-        public bool HasPassed() 
-        { 
+        public bool HasPassed()
+        {
             return Lessons.Count >= RequiredLessonCount;
         }
 
@@ -59,7 +53,7 @@ namespace BmaBackstage.Domain.Entities
             {
                 return 1.0;
             }
-            return ((double)RequiredLessonCount) / Lessons.Count;
+            return ((double)Lessons.Count / RequiredLessonCount);
         }
     }
 }
