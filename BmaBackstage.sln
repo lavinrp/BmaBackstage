@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BmaBackstage.Domain", "BmaB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BmaBackstage.Infrastructure", "BmaBackstage.Infrastructure\BmaBackstage.Infrastructure.csproj", "{9B7E041C-7C5A-4F94-8E98-38A05B66F2F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.BmaBackstage", "Test.BmaBackstage\Test.BmaBackstage.csproj", "{EA8C8258-C168-4235-920F-E5763A2458C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.BmaBackstage", "Test.BmaBackstage\Test.BmaBackstage.csproj", "{EA8C8258-C168-4235-920F-E5763A2458C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

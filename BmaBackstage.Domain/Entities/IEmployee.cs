@@ -3,7 +3,7 @@
     /// <summary>
     /// BMA employee
     /// </summary>
-    public interface IEmployee
+    public interface IEmployee : IPerson 
     {
         /// <summary>
         /// Record of recent hours worked
