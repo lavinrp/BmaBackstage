@@ -11,7 +11,7 @@
         public string Name { get; set; } = string.Empty;
 
         /// <summary>
-        /// Phone numer of emergency contact
+        /// Phone number of emergency contact
         /// </summary>
         public string PhoneNumber { get; set; } = string.Empty;
 

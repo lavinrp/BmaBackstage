@@ -6,6 +6,11 @@
     public class StudentContract
     {
         /// <summary>
+        /// What the contract is for
+        /// </summary>
+        public string ContractType { get; set; } = string.Empty;
+
+        /// <summary>
         /// The day that the contract takes effect
         /// </summary>
         public DateTime ContractStartDate { get; set; }
