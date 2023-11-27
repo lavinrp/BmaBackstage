@@ -17,14 +17,20 @@ namespace Test.BmaBackstage.Ui.BlazorServer.Shared
         [Test]
         public void TestName()
         {
-            Mock<IStudent> mockStudent = new();
-            mockStudent.Setup(foo => foo.Name).Returns("TestName");
+            Student testStudent = new Student(
+                name: "TestName",
+                birthDay: DateTime.Now,
+                progressions: new List<IProgression>(),
+                contracts: new List<StudentContract> { },
+                emergencyContacts: new List<EmergencyContact> { },
+                specialNeeds: new List<string> { },
+                notes: new List<string> { });
             using var ctx = new Bunit.TestContext();
             var cut = ctx.RenderComponent<StudentDetails>(
                 paramaters => paramaters
-                    .Add(p => p.Student, mockStudent.Object)
+                    .Add(p => p.Student, testStudent)
                 );
-            cut.Find("h4").MarkupMatches("<h4>TestName</h4>");
+            cut.Find("h3").MarkupMatches("<h3>TestName</h3>");
         }
     }
 }
