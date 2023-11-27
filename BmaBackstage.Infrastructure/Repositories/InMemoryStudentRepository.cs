@@ -9,11 +9,11 @@ using System.Xml.Linq;
 
 namespace BmaBackstage.Infrastructure.Repositories
 {
-    public class StudentRepository : IStudentRepository
+    public class InMemoryStudentRepository : IStudentRepository
     {
-        public StudentRepository()
+        public InMemoryStudentRepository()
         {
-            m_students = new List<Student>
+            m_students = new List<IStudent>
             {
                 MakeRandomStudent(),
                 MakeRandomStudent(),
@@ -73,9 +73,29 @@ namespace BmaBackstage.Infrastructure.Repositories
         {
             return m_students.Where(student => student.Name == name);
         }
+        
         public IStudent GetStudentById(Guid id)
         {
             return m_students.First(student => student.Id == id);
+        }
+
+        public void UpdateStudent(IStudent student)
+        {
+            int oldStudentIndex = m_students.FindIndex(oldStudent => oldStudent.Id == student.Id);
+            if (oldStudentIndex != -1)
+            {
+                m_students[oldStudentIndex] = student;
+            }
+        }
+
+        public void AddStudent(IStudent student)
+        {
+            m_students.Add(student);
+        }
+
+        public void DeleteStudent(Guid studentId)
+        {
+            m_students.RemoveAll(student => student.Id == studentId);
         }
 
         private string MakeRandomFirstName()
@@ -100,6 +120,7 @@ namespace BmaBackstage.Infrastructure.Repositories
         };
             return names[m_random.Next(names.Count)];
         }
+
         private string MakeRandomLastName()
         {
             var names = new List<string>()
@@ -210,7 +231,8 @@ namespace BmaBackstage.Infrastructure.Repositories
             );
         }
 
-        public List<Student> m_students = new();
+
+        public List<IStudent> m_students = new();
         private Random m_random = new();
     }
 }

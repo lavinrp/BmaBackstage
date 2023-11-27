@@ -10,8 +10,17 @@ namespace BmaBackstage.Domain.Repositories
     public interface IStudentRepository
     {
         IEnumerable<IStudent> GetStudents();
+
         IEnumerable<IStudent> GetStudentsByName(string name);
+
         IEnumerable<IStudent> GetStudentsByFuzzyName(string fuzzyName);
+
         IStudent GetStudentById(Guid id);
+
+        void UpdateStudent(IStudent student);
+
+        void AddStudent(IStudent student);
+
+        void DeleteStudent(Guid studentId);
     }
 }
