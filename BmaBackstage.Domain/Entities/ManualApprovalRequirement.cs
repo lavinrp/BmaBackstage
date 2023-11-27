@@ -43,5 +43,10 @@
         {
             return Passed;
         }
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

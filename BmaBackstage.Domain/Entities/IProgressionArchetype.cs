@@ -6,7 +6,7 @@
     /// IProgressionArchetype cannot be progressed since no single person works on the archetype.
     /// </summary>
     /// <see cref="IProgression"/>
-    public interface IProgressionArchetype
+    public interface IProgressionArchetype : IEntity
     {
         /// <summary>
         /// Human readable name of the archetype.

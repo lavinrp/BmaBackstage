@@ -1,3 +1,5 @@
+using BmaBackstage.Domain.Repositories;
+using BmaBackstage.Infrastructure.Repositories;
 using BmaBackstage.Ui.BlazorServer.Areas.Identity;
 using BmaBackstage.Ui.BlazorServer.Data;
 using Microsoft.AspNetCore.Components;
@@ -20,6 +22,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddSingleton<IStudentRepository, StudentRepository>();
 
 var app = builder.Build();
 

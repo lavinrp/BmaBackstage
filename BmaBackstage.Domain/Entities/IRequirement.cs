@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a requirement of a ProgressionStage
     /// </summary>
-    public interface IRequirement
+    public interface IRequirement : IEntity
     {
         /// <summary>
         /// Human readable name for the requirement

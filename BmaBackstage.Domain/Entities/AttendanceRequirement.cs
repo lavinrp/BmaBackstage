@@ -55,5 +55,10 @@
             }
             return ((double)Lessons.Count / RequiredLessonCount);
         }
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

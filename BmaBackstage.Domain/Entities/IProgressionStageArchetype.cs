@@ -7,7 +7,7 @@
     /// </summary>
     /// <see cref="IProgression"/>
     /// <see cref="ProgressionStage"/>
-    public interface IProgressionStageArchetype
+    public interface IProgressionStageArchetype : IEntity
     {
         /// <summary>
         /// Human readable name of the archetype

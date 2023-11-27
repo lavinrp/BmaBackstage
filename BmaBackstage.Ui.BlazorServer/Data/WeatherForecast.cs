@@ -12,12 +12,7 @@ namespace BmaBackstage.Ui.BlazorServer.Data
         {
             get
             {
-                Domain.Entities.EmergencyContact contact = new()
-                {
-                    Name = "TestDomain"
-                };
-                Infrastructure.Class2 class2 = new();
-                return contact.Name + class2.Name;
+                return "";
             }
             set
             {

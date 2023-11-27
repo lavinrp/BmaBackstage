@@ -33,8 +33,7 @@
         {
             <div class="grid-container">
                 <h3>@contract.ContractType</h3>
-                <p>@contract.ContractStartDate.Date.ToShortDateString()</p>
-                <p>@contract.ContractEndDate.Date.ToShortDateString()</p>
+                <p>@contract.ContractStartDate.Date.ToShortDateString() - @contract.ContractEndDate.Date.ToShortDateString()</p>
             </div>
         }
 
@@ -42,19 +41,11 @@
         @foreach (EmergencyContact contact in Student.EmergencyContacts)
         {
             <h4>@contact.Name</h4>
-            <p>Phone Number</p>
-            <p>@contact.PhoneNumber</p>
-            <p>Email</p>
-            <p>@contact.Email</p>
-            <p>Relationship</p>
-            <p>@contact.Relationship</p>
-            <p>Notes</p>
-            <p>@contact.Notes</p>
+            <p><b>Phone Number: </b>@contact.PhoneNumber</p>
+            <p><b>Email: </b>@contact.Email</p>
+            <p><b>Relationship: </b>@contact.Relationship</p>
+            <p><b>Notes: </b>@contact.Notes</p>
         }
-    }
-    else
-    {
-    
     }
 </div>
 

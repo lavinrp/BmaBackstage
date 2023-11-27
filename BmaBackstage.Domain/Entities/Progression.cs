@@ -30,5 +30,10 @@ namespace BmaBackstage.Domain.Entities
         {
             return Stages[CurrentStageNumber];
         }
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

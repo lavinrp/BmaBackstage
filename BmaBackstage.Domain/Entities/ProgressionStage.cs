@@ -5,7 +5,7 @@
     /// </summary>
     /// <example>Karate Belt progression would have a ProgressionStage instance for each belt.</example>
     /// <see cref="IProgression"/>
-    public class ProgressionStage
+    public class ProgressionStage : IEntity
     {
         /// <summary>
         /// Construct a ProgressionStage with no requirements
@@ -44,5 +44,11 @@
         {
             return Requirements.All(x => x.HasPassed());
         }
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
+
     }
 }

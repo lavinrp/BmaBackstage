@@ -37,5 +37,10 @@ namespace BmaBackstage.Domain.Entities
         public DateTime BirthDay { get; set; }
 
         public List<EmergencyContact> EmergencyContacts { get; set; }
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

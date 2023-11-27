@@ -3,7 +3,7 @@
     /// <summary>
     /// Any Person involved with the dojo
     /// </summary>
-    public interface IPerson
+    public interface IPerson : IEntity
     {
         /// <summary>
         /// Full name of the person

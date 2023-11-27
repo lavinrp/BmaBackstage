@@ -3,7 +3,7 @@
     /// <summary>
     /// Emergency contact information
     /// </summary>
-    public class EmergencyContact
+    public class EmergencyContact : IEntity
     {
         /// <summary>
         /// Full name of emergency contact
@@ -30,5 +30,10 @@
         /// Misc info about emergency contact
         /// </summary>
         public string Notes { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

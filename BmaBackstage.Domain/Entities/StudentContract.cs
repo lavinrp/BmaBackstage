@@ -3,7 +3,7 @@
     /// <summary>
     /// Contract for a student entrolled in any BMA class
     /// </summary>
-    public class StudentContract
+    public class StudentContract : IEntity
     {
         /// <summary>
         /// What the contract is for
@@ -19,5 +19,10 @@
         /// The day that the contract ends
         /// </summary>
         public DateTime ContractEndDate { get; set; }
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }
