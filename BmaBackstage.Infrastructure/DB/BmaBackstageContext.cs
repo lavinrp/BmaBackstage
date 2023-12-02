@@ -22,6 +22,7 @@ namespace BmaBackstage.Infrastructure.DB
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source={DbPath}");
+            => options
+            .UseSqlite($"Data Source={DbPath}");
     }
 }
