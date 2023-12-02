@@ -1,0 +1,24 @@
+﻿@page "/students"
+
+@using BmaBackstage.Domain.Entities;
+@using BmaBackstage.Domain.Repositories;
+@using BmaBackstage.Ui.BlazorServer.Pages;
+@using BmaBackstage.Ui.BlazorServer.Shared;
+
+@inject IStudentRepository StudentRepo;
+
+<PageTitle>Students</PageTitle>
+<h1>Students</h1>
+
+@foreach (var student in StudentRepo.GetStudents())
+{
+    <StudentDetails Student="student"></StudentDetails>
+}
+
+@code{
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+    }
+}

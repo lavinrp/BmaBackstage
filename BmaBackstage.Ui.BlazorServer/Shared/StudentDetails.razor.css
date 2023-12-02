@@ -1,0 +1,19 @@
+﻿.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    padding: 10px;
+}
+
+.student-image 
+{
+    grid-column-start: 0;
+    grid-column-end: 1;
+}
+
+.outlined-student {
+    border-block-color: black;
+    border-block-width: thick;
+    border: dashed;
+    margin: 6px;
+}

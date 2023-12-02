@@ -3,7 +3,7 @@
     /// <summary>
     /// Any skill / rank that can be progressed through training
     /// </summary>
-    public interface IProgression
+    public interface IProgression : IEntity
     {
         /// <summary>
         /// Human readable name of the progression

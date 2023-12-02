@@ -3,7 +3,7 @@
     /// <summary>
     /// Training hall
     /// </summary>
-    public interface IDojo
+    public interface IDojo : IEntity
     {
         /// <summary>
         /// Physical location of the dojo

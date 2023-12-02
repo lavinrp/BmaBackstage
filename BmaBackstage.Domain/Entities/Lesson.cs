@@ -3,7 +3,7 @@
     /// <summary>
     /// An individual training session
     /// </summary>
-    public class Lesson
+    public class Lesson : IEntity
     {
         /// <summary>
         /// Construct a lesson tought by the specified instructor at the specified time
@@ -25,5 +25,10 @@
         /// The date of the lesson
         /// </summary>
         public DateTime Date { get; private set; }
+
+        /// <summary>
+        /// Unique identifier 
+        /// </summary>
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

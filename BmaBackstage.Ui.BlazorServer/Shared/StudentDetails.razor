@@ -1,0 +1,71 @@
+﻿@using BmaBackstage.Domain.Entities
+
+
+<div class="outlined-student">
+    @if(Student != null)
+    {
+
+        <h3>@Student.Name</h3>
+        <div class="grid-container">
+            <img class="student-image" src="images/PlaceholderHeadshot.png" />
+            <div>
+                <h4>Age</h4>
+                <p>@AgeFromBirthday(Student.BirthDay)</p>
+                <h4>Birthday</h4>
+                <p>@Student.BirthDay.ToShortDateString()</p>
+            </div>
+        </div>
+        <h3>Notes</h3>
+        <textarea>
+        </textarea>
+
+        <h3>Progressions</h3>
+        @foreach(IProgression progression in Student.Progressions)
+        {
+            <div class="grid-container">
+                <h3>@progression.Name</h3>
+                <p>@progression.GetCurrentStage().Name</p>
+            </div>
+        }
+
+        <h3>Contracts</h3>
+        @foreach(StudentContract contract in Student.Contracts)
+        {
+            <div class="grid-container">
+                <h3>@contract.ContractType</h3>
+                <p>@contract.ContractStartDate.ToShortDateString() - @contract.ContractEndDate.ToShortDateString()</p>
+            </div>
+        }
+
+        <h3>Emergency Contacts</h3>
+        @foreach (EmergencyContact contact in Student.EmergencyContacts)
+        {
+            <h4>@contact.Name</h4>
+            <p><b>Phone Number: </b>@contact.PhoneNumber</p>
+            <p><b>Email: </b>@contact.Email</p>
+            <p><b>Relationship: </b>@contact.Relationship</p>
+            <p><b>Notes: </b>@contact.Notes</p>
+        }
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public IStudent? Student { get; set; }
+
+    private int AgeFromBirthday(DateTime birthday)
+    {
+        DateTime birthDate = birthday.Date;
+
+        // Save today's date.
+        var today = DateTime.Today;
+
+        // Calculate the age.
+        var age = today.Year - birthday.Year;
+
+        // Go back to the year in which the person was born in case of a leap year
+        if (birthday.Date > today.AddYears(-age)) age--;
+        return age;
+    }
+}

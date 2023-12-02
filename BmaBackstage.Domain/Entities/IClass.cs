@@ -4,7 +4,7 @@
     /// Represents a scheduled set of lessons.
     /// </summary>
     /// <example>Tuesday/Thursday Advanced Class, Monday/Wednesday Novice Class, Self Defense Class</example>
-    public interface IClass
+    public interface IClass : IEntity
     {
         /// <summary>
         /// Instructors regularly leading the class
