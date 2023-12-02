@@ -21,8 +21,8 @@ namespace Test.BmaBackstage.Domain.Entities
             string requirementName = "test requirement";
             bool hasPassedRequirement = true;
             ManualApprovalRequirement requirement = new(requirementName, hasPassedRequirement);
-            Assert.AreEqual(requirementName, requirement.Name);
-            Assert.AreEqual(hasPassedRequirement, requirement.Passed);
+            Assert.That(requirementName, Is.EqualTo(requirement.Name));
+            Assert.That(hasPassedRequirement, Is.EqualTo(requirement.Passed));
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Test.BmaBackstage.Domain.Entities
         {
             string requirementName = "test requirement";
             ManualApprovalRequirement requirement = new(requirementName);
-            Assert.AreEqual(false, requirement.Passed);
+            Assert.That(false, Is.EqualTo(requirement.Passed));
         }
 
         [TestCase(false)]
@@ -39,8 +39,8 @@ namespace Test.BmaBackstage.Domain.Entities
         {
             string requirementName = "test requirement";
             ManualApprovalRequirement requirement = new(requirementName, hasPassedRequirement);
-            Assert.AreEqual(hasPassedRequirement, requirement.HasPassed());
-            Assert.AreEqual(hasPassedRequirement, requirement.Passed);
+            Assert.That(hasPassedRequirement, Is.EqualTo(requirement.HasPassed()));
+            Assert.That(hasPassedRequirement, Is.EqualTo(requirement.Passed));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace Test.BmaBackstage.Domain.Entities
             string requirementName = "test requirement";
             bool hasPassedRequirement = true;
             ManualApprovalRequirement requirement = new(requirementName, hasPassedRequirement);
-            Assert.AreEqual(1.0, requirement.CalculateCompletionPercent());
+            Assert.That(1.0, Is.EqualTo(requirement.CalculateCompletionPercent()));
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace Test.BmaBackstage.Domain.Entities
             string requirementName = "test requirement";
             bool hasPassedRequirement = false;
             ManualApprovalRequirement requirement = new(requirementName, hasPassedRequirement);
-            Assert.AreEqual(0.0, requirement.CalculateCompletionPercent());
+            Assert.That(0.0, Is.EqualTo(requirement.CalculateCompletionPercent()));
         }
     }
 }

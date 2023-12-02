@@ -29,8 +29,8 @@ namespace Test.BmaBackstage.Domain.Entities
             mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
             string requirementName = "requirement name";
             AgeRequirement requirement = new(requirementName, requiredAge, mockPerson.Object);
-            Assert.AreEqual(requiredAge, requirement.RequiredAge);
-            Assert.AreEqual(requirementName, requirement.Name);
+            Assert.That(requiredAge, Is.EqualTo(requirement.RequiredAge));
+            Assert.That(requirementName, Is.EqualTo(requirement.Name));
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Test.BmaBackstage.Domain.Entities
             Mock<IPerson> mockPerson = new();
             mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
             AgeRequirement requirement = new("test", requiredAge, mockPerson.Object);
-            Assert.IsFalse(requirement.HasPassed());
+            Assert.That(!requirement.HasPassed());
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace Test.BmaBackstage.Domain.Entities
             Mock<IPerson> mockPerson = new();
             mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
             AgeRequirement requirement = new("test", requiredAge, mockPerson.Object);
-            Assert.IsTrue(requirement.HasPassed());
+            Assert.That(requirement.HasPassed());
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace Test.BmaBackstage.Domain.Entities
             Mock<IPerson> mockPerson = new();
             mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
             AgeRequirement requirement = new("test", requiredAge, mockPerson.Object);
-            Assert.IsTrue(requirement.HasPassed());
+            Assert.That(requirement.HasPassed());
         }
 
         [TestCase(10, 1)]
@@ -90,11 +90,11 @@ namespace Test.BmaBackstage.Domain.Entities
             double percent = requirement.CalculateCompletionPercent();
             if (requiredAge > actualAge)
             {
-                Assert.AreEqual((double)actualAge / requiredAge, percent, 0.01);
+                Assert.That((double)actualAge / requiredAge, Is.EqualTo(percent).Within(0.01));
             }
             else
             {
-                Assert.AreEqual(1.0, percent, 0.01);
+                Assert.That(1.0, Is.EqualTo(percent).Within(0.01));
             }
         }
     }

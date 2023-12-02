@@ -23,8 +23,8 @@ namespace Test.BmaBackstage.Domain.Entities
             Mock<IInstructor> mockInstructor = new();
             DateTime date = DateTime.Now;
             Lesson lesson = new(mockInstructor.Object, date);
-            Assert.AreEqual(lesson.Date, date);
-            Assert.AreEqual(lesson.Instructor, mockInstructor.Object);
+            Assert.That(lesson.Date, Is.EqualTo(date));
+            Assert.That(lesson.Instructor, Is.EqualTo(mockInstructor.Object));
         }
 
 

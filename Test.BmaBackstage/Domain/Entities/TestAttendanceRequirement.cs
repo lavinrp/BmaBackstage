@@ -28,13 +28,13 @@ namespace Test.BmaBackstage.Domain.Entities
                 new Lesson(new Mock<IInstructor>().Object, DateTime.Now)
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
-            Assert.AreEqual(name, requirement.Name);
-            Assert.AreEqual(requiredLessonCount, requirement.RequiredLessonCount);
-            Assert.AreEqual(lessons, requirement.Lessons);
+            Assert.That(name, Is.EqualTo(requirement.Name));
+            Assert.That(requiredLessonCount, Is.EqualTo(requirement.RequiredLessonCount));
+            Assert.That(lessons, Is.EqualTo(requirement.Lessons));
         }
 
         [Test]
-        public void TestHasPassedWithFiewerLessonsThanRequired()
+        public void TestHasPassedWithFewerLessonsThanRequired()
         {
             string name = "test name";
             int requiredLessonCount = 10;
@@ -43,7 +43,7 @@ namespace Test.BmaBackstage.Domain.Entities
                 new Lesson(new Mock<IInstructor>().Object, DateTime.Now)
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
-            Assert.IsFalse(requirement.HasPassed());
+            Assert.That(!requirement.HasPassed());
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Test.BmaBackstage.Domain.Entities
                 new Lesson(new Mock<IInstructor>().Object, DateTime.Now)
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
-            Assert.IsTrue(requirement.HasPassed());
+            Assert.That(requirement.HasPassed()); 
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace Test.BmaBackstage.Domain.Entities
                 new Lesson(new Mock<IInstructor>().Object, DateTime.Now),
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
-            Assert.IsTrue(requirement.HasPassed());
+            Assert.That(requirement.HasPassed());
         }
 
         [TestCase(10, 1)]
@@ -93,11 +93,11 @@ namespace Test.BmaBackstage.Domain.Entities
 
             if (requiredLessons > actualLessons)
             {
-                Assert.AreEqual((double)actualLessons / requiredLessons, percent, 0.01);
+                Assert.That((double)actualLessons / requiredLessons, Is.EqualTo(percent).Within(0.01));
             }
             else
             {
-                Assert.AreEqual(1.0, percent, 0.01);
+                Assert.That(1.0, Is.EqualTo(percent).Within(0.01));
             }
         }
     }

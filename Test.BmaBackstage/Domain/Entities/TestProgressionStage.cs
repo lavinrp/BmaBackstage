@@ -1,6 +1,7 @@
 ﻿using BmaBackstage.Domain.Entities;
 using Moq;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 using System.Collections.Generic;
 
 
@@ -23,8 +24,8 @@ namespace Test.BmaBackstage.Domain.Entities
         {
             string progressionStageName = "Test Name";
             ProgressionStage stage = new(progressionStageName);
-            Assert.AreEqual(progressionStageName, stage.Name);
-            Assert.IsEmpty(stage.Requirements);
+            Assert.That(progressionStageName, Is.EqualTo(stage.Name));
+            CollectionAssert.IsEmpty(stage.Requirements);
         }
 
         [Test]
@@ -37,9 +38,9 @@ namespace Test.BmaBackstage.Domain.Entities
             };
 
             ProgressionStage stage = new(progressionStageName, requirements);
-            Assert.AreEqual(progressionStageName, stage.Name);
-            Assert.IsNotEmpty(stage.Requirements);
-            Assert.AreEqual(requirements, stage.Requirements);
+            Assert.That(progressionStageName, Is.EqualTo(stage.Name));
+            CollectionAssert.IsNotEmpty(stage.Requirements);
+            Assert.That(requirements, Is.EqualTo(stage.Requirements));
         }
 
         [TestCase(false, false, ExpectedResult = false)]
@@ -67,7 +68,7 @@ namespace Test.BmaBackstage.Domain.Entities
             string progressionStageName = "Test Name";
             List<IRequirement> requirements = new();
             ProgressionStage stage = new(progressionStageName, requirements);
-            Assert.IsTrue(stage.IsComplete());
+            Assert.That(stage.IsComplete());
         }
     }
 }
