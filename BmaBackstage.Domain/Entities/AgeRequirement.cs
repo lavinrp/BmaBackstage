@@ -3,7 +3,7 @@
     /// <summary>
     /// Tracks minimum age required to complete a ProgressionStage
     /// </summary>
-    public class AgeRequirement : IRequirement
+    public class AgeRequirement : AbstractRequirement
     {
         /// <summary>
         /// Create an age requirement that will be passed when
@@ -27,15 +27,10 @@
         public int RequiredAge { get; private set; }
 
         /// <summary>
-        /// Human readable name for the requirement.
-        /// </summary>
-        public string Name { get; private set; }
-
-        /// <summary>
         /// Current progress towards completion of the requirement.
         /// </summary>
         /// <returns>ratio of current age to required age. 1.0 is 100% </returns>
-        public double CalculateCompletionPercent()
+        public override double CalculateCompletionPercent()
         {
             if (HasPassed())
             {
@@ -48,7 +43,7 @@
         /// Checks if the age requirement has been met.
         /// </summary>
         /// <returns>Returns true if the specified person is at least the required age. False otherwise.</returns>
-        public bool HasPassed()
+        public override bool HasPassed()
         {
             return GetCurrentAge() >= RequiredAge;
         }
@@ -75,10 +70,5 @@
             }
             return age;
         }
-
-        /// <summary>
-        /// Unique identifier 
-        /// </summary>
-        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

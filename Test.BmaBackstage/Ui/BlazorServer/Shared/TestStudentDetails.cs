@@ -20,7 +20,7 @@ namespace Test.BmaBackstage.Ui.BlazorServer.Shared
             Student testStudent = new Student(
                 name: "TestName",
                 birthDay: DateTime.Now,
-                progressions: new List<IProgression>(),
+                progressions: new List<Progression>(),
                 contracts: new List<StudentContract> { },
                 emergencyContacts: new List<EmergencyContact> { },
                 specialNeeds: new List<string> { },

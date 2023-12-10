@@ -11,7 +11,7 @@
         /// Construct a ProgressionStage with no requirements
         /// </summary>
         /// <param name="name">The name of the stage</param>
-        public ProgressionStage(string name) : this(name, new List<IRequirement>())
+        public ProgressionStage(string name) : this(name, new List<AbstractRequirement>())
         {
         }
 
@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="name">The name of the stage</param>
         /// <param name="requirements">The requirements for completion of the stage</param>
-        public ProgressionStage(string name, List<IRequirement> requirements)
+        public ProgressionStage(string name, List<AbstractRequirement> requirements)
         {
             Name = name;
             Requirements = requirements;
@@ -34,7 +34,7 @@
         /// <summary>
         /// Requirements that must be passed to complete the stage
         /// </summary>
-        public List<IRequirement> Requirements { get; private set; }
+        public List<AbstractRequirement> Requirements { get; private set; }
 
         /// <summary>
         /// Checks if all requirements have been passed

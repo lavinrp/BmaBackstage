@@ -168,7 +168,7 @@ namespace BmaBackstage.Infrastructure.Repositories
                 birthDay: MakeRandomDate(
                     minDate: new DateTime(1980, 1, 1, 10, 0, 0),
                     maxDate: new DateTime(2020, 1, 1, 10, 0, 0)),
-                progressions: new List<IProgression>
+                progressions: new List<Progression>
                 {
                 new Progression(
                     "Karate",

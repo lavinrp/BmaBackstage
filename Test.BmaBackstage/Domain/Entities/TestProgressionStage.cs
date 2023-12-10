@@ -32,9 +32,9 @@ namespace Test.BmaBackstage.Domain.Entities
         public void TestProgressionStageConstructorSetsProperties()
         {
             string progressionStageName = "Test Name";
-            List<IRequirement> requirements = new()
+            List<AbstractRequirement> requirements = new()
             {
-                new Mock<IRequirement>().Object
+                new Mock<AbstractRequirement>().Object
             };
 
             ProgressionStage stage = new(progressionStageName, requirements);
@@ -48,12 +48,12 @@ namespace Test.BmaBackstage.Domain.Entities
         [TestCase(true, true, ExpectedResult = true)]
         public bool TestIsComplete(bool requirement1Passed, bool requirement2Passed)
         {
-            Mock<IRequirement> requirement1 = new();
+            Mock<AbstractRequirement> requirement1 = new();
             requirement1.Setup(foo => foo.HasPassed()).Returns(requirement1Passed);
-            Mock<IRequirement> requirement2 = new();
+            Mock<AbstractRequirement> requirement2 = new();
             requirement2.Setup(foo => foo.HasPassed()).Returns(requirement2Passed);
             string progressionStageName = "Test Name";
-            List<IRequirement> requirements = new()
+            List<AbstractRequirement> requirements = new()
             {
                 requirement1.Object,
                 requirement2.Object
@@ -66,7 +66,7 @@ namespace Test.BmaBackstage.Domain.Entities
         public void TestIsCompleteNoRequirements()
         {
             string progressionStageName = "Test Name";
-            List<IRequirement> requirements = new();
+            List<AbstractRequirement> requirements = new();
             ProgressionStage stage = new(progressionStageName, requirements);
             Assert.That(stage.IsComplete());
         }

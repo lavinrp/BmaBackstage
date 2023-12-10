@@ -17,7 +17,7 @@
         /// <summary>
         /// Requirements for the typical progression stage
         /// </summary>
-        List<IRequirement> Requirements { get; set; }
+        List<AbstractRequirement> Requirements { get; set; }
 
         /// <summary>
         /// Create a ProgressionStage based on this archetype

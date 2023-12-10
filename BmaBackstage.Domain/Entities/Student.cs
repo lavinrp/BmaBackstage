@@ -11,7 +11,7 @@ namespace BmaBackstage.Domain.Entities
         public Student(
             string name, 
             DateTime birthDay, 
-            List<IProgression> progressions, 
+            List<Progression> progressions, 
             List<StudentContract> contracts, 
             List<EmergencyContact> emergencyContacts, 
             List<string> specialNeeds, 
@@ -30,7 +30,7 @@ namespace BmaBackstage.Domain.Entities
         public List<string> SpecialNeeds { get; set; }
         public List<string> Notes { get; set; }
 
-        public List<IProgression> Progressions { get; set; }
+        public List<Progression> Progressions { get; set; }
 
         public string Name { get; set; }
 

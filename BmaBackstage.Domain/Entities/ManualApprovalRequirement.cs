@@ -3,7 +3,7 @@
     /// <summary>
     /// Tracks a requirement that must be manually approved.
     /// </summary>
-    public class ManualApprovalRequirement : IRequirement
+    public class ManualApprovalRequirement : AbstractRequirement
     {
         /// <summary>
         /// Create a requirement that is only passed after manual approval
@@ -22,15 +22,10 @@
         public bool Passed { get; set; }
 
         /// <summary>
-        /// Human readable name of the requirement
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         /// Current progress towards completion of the requirement.
         /// </summary>
         /// <returns></returns>
-        public double CalculateCompletionPercent()
+        public override double CalculateCompletionPercent()
         {
             return Passed ? 1.0 : 0.0;
         }
@@ -39,14 +34,9 @@
         /// Checks if the requirement has been marked as passed
         /// </summary>
         /// <returns> True if the requirement has been passed. False otherwise. </returns>
-        public bool HasPassed()
+        public override bool HasPassed()
         {
             return Passed;
         }
-
-        /// <summary>
-        /// Unique identifier 
-        /// </summary>
-        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

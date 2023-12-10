@@ -3,7 +3,7 @@
     /// <summary>
     /// Tracks minimum attendance required to complete a ProgressionStage
     /// </summary>
-    public class AttendanceRequirement : IRequirement
+    public class AttendanceRequirement : AbstractRequirement
     {
         /// <summary>
         /// Create an attendance requirement that will be passed when 
@@ -30,15 +30,10 @@
         public List<Lesson> Lessons { get; set; }
 
         /// <summary>
-        /// Human readable name for the requirement
-        /// </summary>
-        public string Name { get; private set; }
-
-        /// <summary>
         /// Checks if the attendance requirement has been met.
         /// </summary>
         /// <returns>Returns true if the number of lessons is greater than the required lesson count. False otherwise. </returns>
-        public bool HasPassed()
+        public override bool HasPassed()
         {
             return Lessons.Count >= RequiredLessonCount;
         }
@@ -47,7 +42,7 @@
         /// Current progress towards completion of the requirement.
         /// </summary>
         /// <returns> Ratio of required classes to current classes. 1.0 is 100% </returns>
-        public double CalculateCompletionPercent()
+        public override double CalculateCompletionPercent()
         {
             if (HasPassed())
             {
@@ -55,10 +50,5 @@
             }
             return ((double)Lessons.Count / RequiredLessonCount);
         }
-
-        /// <summary>
-        /// Unique identifier 
-        /// </summary>
-        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }
