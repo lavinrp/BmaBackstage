@@ -1,4 +1,4 @@
-﻿using BmaBackstage.Domain.Entities;
+﻿using BmaBackstage.Domain.Entities.Progressions.Requirements;
 using NUnit.Framework;
 
 namespace Test.BmaBackstage.Domain.Entities

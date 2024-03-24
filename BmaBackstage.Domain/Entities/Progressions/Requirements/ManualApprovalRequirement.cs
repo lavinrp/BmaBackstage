@@ -1,4 +1,4 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities.Progressions.Requirements
 {
     /// <summary>
     /// Tracks a requirement that must be manually approved.

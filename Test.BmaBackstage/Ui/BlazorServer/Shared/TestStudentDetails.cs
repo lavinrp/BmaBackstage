@@ -9,6 +9,8 @@ using Bunit;
 using BmaBackstage.Ui.BlazorServer.Shared;
 using Moq;
 using BmaBackstage.Domain.Entities;
+using BmaBackstage.Domain.Entities.Progressions;
+using BmaBackstage.Domain.Entities.People;
 
 namespace Test.BmaBackstage.Ui.BlazorServer.Shared
 {

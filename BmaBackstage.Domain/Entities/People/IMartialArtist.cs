@@ -1,4 +1,6 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿using BmaBackstage.Domain.Entities.Progressions;
+
+namespace BmaBackstage.Domain.Entities.People
 {
     /// <summary>
     /// Person training in any system

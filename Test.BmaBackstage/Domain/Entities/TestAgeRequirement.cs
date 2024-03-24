@@ -1,4 +1,5 @@
-﻿using BmaBackstage.Domain.Entities;
+﻿using BmaBackstage.Domain.Entities.People;
+using BmaBackstage.Domain.Entities.Progressions.Requirements;
 using Moq;
 using NUnit.Framework;
 using System;

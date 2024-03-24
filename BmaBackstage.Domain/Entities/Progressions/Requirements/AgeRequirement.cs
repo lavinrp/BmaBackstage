@@ -1,4 +1,6 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿using BmaBackstage.Domain.Entities.People;
+
+namespace BmaBackstage.Domain.Entities.Progressions.Requirements
 {
     /// <summary>
     /// Tracks minimum age required to complete a ProgressionStage
@@ -12,14 +14,14 @@
         /// <param name="name">Huan readable name for the requirement.</param>
         /// <param name="requiredAge">Minimum age required to pass the requirement.</param>
         /// <param name="person">Person who must be the requiredAge</param>
-        public AgeRequirement(string name, int requiredAge, IPerson person)
+        public AgeRequirement(string name, int requiredAge, Student person)
         {
             m_person = person;
             Name = name;
             RequiredAge = requiredAge;
         }
 
-        private readonly IPerson m_person;
+        private readonly Student m_person;
 
         /// <summary>
         /// Minimum age required to pass the requirement.

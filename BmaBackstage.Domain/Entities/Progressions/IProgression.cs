@@ -1,4 +1,4 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities.Progressions
 {
     /// <summary>
     /// Any skill / rank that can be progressed through training

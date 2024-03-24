@@ -1,4 +1,6 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿using BmaBackstage.Domain.Entities.People;
+
+namespace BmaBackstage.Domain.Entities
 {
     /// <summary>
     /// An individual training session

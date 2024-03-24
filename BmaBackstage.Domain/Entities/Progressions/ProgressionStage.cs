@@ -1,4 +1,6 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿using BmaBackstage.Domain.Entities.Progressions.Requirements;
+
+namespace BmaBackstage.Domain.Entities.Progressions
 {
     /// <summary>
     /// Stage of any training progression

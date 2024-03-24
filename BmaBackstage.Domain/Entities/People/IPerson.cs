@@ -1,4 +1,4 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities.People
 {
     /// <summary>
     /// Any Person involved with the dojo

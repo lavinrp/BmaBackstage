@@ -1,4 +1,4 @@
-﻿using BmaBackstage.Domain.Entities;
+﻿using BmaBackstage.Domain.Entities.People;
 using System;
 using System.Collections.Generic;
 using System.Linq;

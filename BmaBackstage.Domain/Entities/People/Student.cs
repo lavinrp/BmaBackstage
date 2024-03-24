@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BmaBackstage.Domain.Entities.Progressions;
 
-namespace BmaBackstage.Domain.Entities
+namespace BmaBackstage.Domain.Entities.People
 {
     public class Student : IStudent
     {
         public Student(
-            string name, 
-            DateTime birthDay, 
-            List<Progression> progressions, 
-            List<StudentContract> contracts, 
-            List<EmergencyContact> emergencyContacts, 
-            List<string> specialNeeds, 
+            string name,
+            DateTime birthDay,
+            List<Progression> progressions,
+            List<StudentContract> contracts,
+            List<EmergencyContact> emergencyContacts,
+            List<string> specialNeeds,
             List<string> notes)
         {
             Contracts = contracts;

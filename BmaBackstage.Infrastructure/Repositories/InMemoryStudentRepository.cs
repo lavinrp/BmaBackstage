@@ -1,4 +1,6 @@
 ﻿using BmaBackstage.Domain.Entities;
+using BmaBackstage.Domain.Entities.People;
+using BmaBackstage.Domain.Entities.Progressions;
 using BmaBackstage.Domain.Repositories;
 using System;
 using System.Collections.Generic;

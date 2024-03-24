@@ -1,5 +1,4 @@
-﻿
-namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities.Progressions.Requirements
 {
     /// <summary>
     /// Represents a requirement of a ProgressionStage

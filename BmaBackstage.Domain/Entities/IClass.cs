@@ -1,4 +1,7 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿using BmaBackstage.Domain.Entities.People;
+using BmaBackstage.Domain.Entities.Progressions;
+
+namespace BmaBackstage.Domain.Entities
 {
     /// <summary>
     /// Represents a scheduled set of lessons.

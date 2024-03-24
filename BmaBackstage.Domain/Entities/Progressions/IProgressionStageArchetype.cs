@@ -1,4 +1,6 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿using BmaBackstage.Domain.Entities.Progressions.Requirements;
+
+namespace BmaBackstage.Domain.Entities.Progressions
 {
     /// <summary>
     /// Template for a typical progression stage.

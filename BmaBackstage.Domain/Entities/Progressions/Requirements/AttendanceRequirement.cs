@@ -1,4 +1,4 @@
-﻿namespace BmaBackstage.Domain.Entities
+﻿namespace BmaBackstage.Domain.Entities.Progressions.Requirements
 {
     /// <summary>
     /// Tracks minimum attendance required to complete a ProgressionStage
@@ -48,7 +48,7 @@
             {
                 return 1.0;
             }
-            return ((double)Lessons.Count / RequiredLessonCount);
+            return (double)Lessons.Count / RequiredLessonCount;
         }
     }
 }
