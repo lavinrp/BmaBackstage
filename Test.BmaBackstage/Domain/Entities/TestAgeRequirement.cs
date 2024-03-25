@@ -26,10 +26,10 @@ namespace Test.BmaBackstage.Domain.Entities
 
             var currentDate = DateTime.Now;
             var pastDate = currentDate.AddYears(-currentAge);
-            Mock<IPerson> mockPerson = new();
-            mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
+            Student student = TestUtilities.FakePersonFactory.MakeRandomStudent();
+            student.BirthDay = pastDate;
             string requirementName = "requirement name";
-            AgeRequirement requirement = new(requirementName, requiredAge, mockPerson.Object);
+            AgeRequirement requirement = new(requirementName, requiredAge, student);
             Assert.That(requiredAge, Is.EqualTo(requirement.RequiredAge));
             Assert.That(requirementName, Is.EqualTo(requirement.Name));
         }
@@ -42,9 +42,9 @@ namespace Test.BmaBackstage.Domain.Entities
 
             var currentDate = DateTime.Now;
             var pastDate = currentDate.AddYears(-currentAge);
-            Mock<IPerson> mockPerson = new();
-            mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
-            AgeRequirement requirement = new("test", requiredAge, mockPerson.Object);
+            Student student = TestUtilities.FakePersonFactory.MakeRandomStudent();
+            student.BirthDay = pastDate;
+            AgeRequirement requirement = new("test", requiredAge, student);
             Assert.That(!requirement.HasPassed());
         }
 
@@ -56,9 +56,9 @@ namespace Test.BmaBackstage.Domain.Entities
 
             var currentDate = DateTime.Now;
             var pastDate = currentDate.AddYears(-currentAge);
-            Mock<IPerson> mockPerson = new();
-            mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
-            AgeRequirement requirement = new("test", requiredAge, mockPerson.Object);
+            Student student = TestUtilities.FakePersonFactory.MakeRandomStudent();
+            student.BirthDay = pastDate;
+            AgeRequirement requirement = new("test", requiredAge, student);
             Assert.That(requirement.HasPassed());
         }
 
@@ -70,9 +70,9 @@ namespace Test.BmaBackstage.Domain.Entities
 
             var currentDate = DateTime.Now;
             var pastDate = currentDate.AddYears(-currentAge);
-            Mock<IPerson> mockPerson = new();
-            mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
-            AgeRequirement requirement = new("test", requiredAge, mockPerson.Object);
+            Student student = TestUtilities.FakePersonFactory.MakeRandomStudent();
+            student.BirthDay = pastDate;
+            AgeRequirement requirement = new("test", requiredAge, student);
             Assert.That(requirement.HasPassed());
         }
 
@@ -85,9 +85,9 @@ namespace Test.BmaBackstage.Domain.Entities
         {
             var currentDate = DateTime.Now;
             var pastDate = currentDate.AddYears(-actualAge);
-            Mock<IPerson> mockPerson = new();
-            mockPerson.Setup(foo => foo.BirthDay).Returns(pastDate);
-            AgeRequirement requirement = new("test", requiredAge, mockPerson.Object);
+            Student student = TestUtilities.FakePersonFactory.MakeRandomStudent();
+            student.BirthDay = pastDate;
+            AgeRequirement requirement = new("test", requiredAge, student);
             double percent = requirement.CalculateCompletionPercent();
             if (requiredAge > actualAge)
             {
