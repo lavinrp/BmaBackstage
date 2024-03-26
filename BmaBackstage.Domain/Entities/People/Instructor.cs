@@ -13,6 +13,24 @@ namespace BmaBackstage.Domain.Entities.People
         private readonly List<Progression> m_progressions = new();
         private readonly List<EmergencyContact> m_emergencyContacts = new();
 
+        public Instructor(
+            string name,
+            DateTime birthday,
+            DateTime lastSafeSportTestDate,
+            DateTime lastBackgroundCheckDate,
+            List<TimeSheetEntry> timeSheet, 
+            List<Progression> progressions, 
+            List<EmergencyContact> emergencyContacts) 
+        {
+            Name = name;
+            BirthDay = birthday;
+            LastSafeSportTestDate = lastBackgroundCheckDate;
+            LastBackgroundCheckDate = lastBackgroundCheckDate;
+            m_timeSheet = timeSheet;
+            m_progressions = progressions;
+            m_emergencyContacts = emergencyContacts;
+        }
+
         public DateTime LastSafeSportTestDate { get; set; } = DateTime.MinValue;
 
         public DateTime LastBackgroundCheckDate { get; set; } = DateTime.MinValue;

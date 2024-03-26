@@ -174,30 +174,27 @@ namespace Test.BmaBackstage.TestUtilities
         
         public static Instructor MakeRandomInstructor()
         {
-            Instructor instructor = new Instructor()
-            {
-                LastSafeSportTestDate = MakeRandomDate(DateTime.Now.AddYears(-5), DateTime.Now),
-                LastBackgroundCheckDate = MakeRandomDate(DateTime.Now.AddYears(-5), DateTime.Now),
-                TimeSheet = new List<TimeSheetEntry> {  },
-                Progressions = new List<Progression> {
-                    MakeRandomKarateProgression()
-                },
-                Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
-                BirthDay = MakeRandomDate(
+            Instructor instructor = new Instructor(
+                name: MakeRandomFirstName() + " " + MakeRandomLastName(),
+                birthday: MakeRandomDate(
                     minDate: new DateTime(1980, 1, 1, 10, 0, 0),
                     maxDate: new DateTime(2020, 1, 1, 10, 0, 0)),
-                EmergencyContacts = new List<EmergencyContact>()
+                lastSafeSportTestDate: MakeRandomDate(DateTime.Now.AddYears(-5), DateTime.Now),
+                lastBackgroundCheckDate: MakeRandomDate(DateTime.Now.AddYears(-5), DateTime.Now),
+                new List<TimeSheetEntry> { },
+                new List<Progression> { MakeRandomKarateProgression() },
+                new List<EmergencyContact>()
                 {
                     new EmergencyContact
-                        {
-                            Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
-                            Relationship = "Parent",
-                            PhoneNumber = MakeRandomPhoneNumber(),
-                            Email="test@fake.net",
-                            Notes = "Only available when the sun is not out due to vampirism."
-                        }
-                    },
-            };
+                    {
+                        Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
+                        Relationship = "Parent",
+                        PhoneNumber = MakeRandomPhoneNumber(),
+                        Email="test@fake.net",
+                        Notes = "Only available when the sun is not out due to vampirism."
+                    }
+                }
+            );
             return instructor;
         }
     }
