@@ -5,6 +5,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Test.BmaBackstage.TestUtilities;
 
 namespace Test.BmaBackstage.Domain.Entities
 {
@@ -27,7 +28,7 @@ namespace Test.BmaBackstage.Domain.Entities
             int requiredLessonCount = 10;
             List<Lesson> lessons = new()
             {
-                new Lesson(new Mock<IInstructor>().Object, DateTime.Now)
+                new Lesson(FakePersonFactory.MakeRandomInstructor(), DateTime.Now)
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
             Assert.That(name, Is.EqualTo(requirement.Name));
@@ -42,7 +43,7 @@ namespace Test.BmaBackstage.Domain.Entities
             int requiredLessonCount = 10;
             List<Lesson> lessons = new()
             {
-                new Lesson(new Mock<IInstructor>().Object, DateTime.Now)
+                new Lesson(FakePersonFactory.MakeRandomInstructor(), DateTime.Now)
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
             Assert.That(!requirement.HasPassed());
@@ -55,7 +56,7 @@ namespace Test.BmaBackstage.Domain.Entities
             int requiredLessonCount = 1;
             List<Lesson> lessons = new()
             {
-                new Lesson(new Mock<IInstructor>().Object, DateTime.Now)
+                new Lesson(FakePersonFactory.MakeRandomInstructor(), DateTime.Now)
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
             Assert.That(requirement.HasPassed()); 
@@ -68,8 +69,8 @@ namespace Test.BmaBackstage.Domain.Entities
             int requiredLessonCount = 1;
             List<Lesson> lessons = new()
             {
-                new Lesson(new Mock<IInstructor>().Object, DateTime.Now),
-                new Lesson(new Mock<IInstructor>().Object, DateTime.Now),
+                new Lesson(FakePersonFactory.MakeRandomInstructor(), DateTime.Now),
+                new Lesson(FakePersonFactory.MakeRandomInstructor(), DateTime.Now),
             };
             AttendanceRequirement requirement = new(name, requiredLessonCount, lessons);
             Assert.That(requirement.HasPassed());
@@ -87,7 +88,7 @@ namespace Test.BmaBackstage.Domain.Entities
             List<Lesson> lessons = new();
             for (int i = 0; i < actualLessons; i++)
             {
-                lessons.Add(new Lesson(new Mock<IInstructor>().Object, DateTime.Now));
+                lessons.Add(new Lesson(FakePersonFactory.MakeRandomInstructor(), DateTime.Now));
             }
 
             AttendanceRequirement requirement = new(name, requiredLessons, lessons);

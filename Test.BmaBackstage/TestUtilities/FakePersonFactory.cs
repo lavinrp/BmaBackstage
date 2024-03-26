@@ -97,16 +97,9 @@ namespace Test.BmaBackstage.TestUtilities
             return phoneNumberBuilder.ToString();
         }
 
-        public static Student MakeRandomStudent()
+        private static Progression MakeRandomKarateProgression()
         {
-            return new Student(
-                name: MakeRandomFirstName() + " " + MakeRandomLastName(),
-                birthDay: MakeRandomDate(
-                    minDate: new DateTime(1980, 1, 1, 10, 0, 0),
-                    maxDate: new DateTime(2020, 1, 1, 10, 0, 0)),
-                progressions: new List<Progression>
-                {
-                new Progression(
+            return new Progression(
                     "Karate",
                     new List<ProgressionStage>
                     {
@@ -130,7 +123,19 @@ namespace Test.BmaBackstage.TestUtilities
                         new ProgressionStage(name: "9th Dan"),
                         new ProgressionStage(name: "10th Dan"),
                     },
-                    currentStageNumber: m_random.Next(13))
+                    currentStageNumber: m_random.Next(13));
+        }
+
+        public static Student MakeRandomStudent()
+        {
+            return new Student(
+                name: MakeRandomFirstName() + " " + MakeRandomLastName(),
+                birthDay: MakeRandomDate(
+                    minDate: new DateTime(1980, 1, 1, 10, 0, 0),
+                    maxDate: new DateTime(2020, 1, 1, 10, 0, 0)),
+                progressions: new List<Progression>
+                {
+                    MakeRandomKarateProgression()
                 },
                 contracts: new List<StudentContract>
                 {
@@ -151,20 +156,49 @@ namespace Test.BmaBackstage.TestUtilities
                 emergencyContacts:
                     new List<EmergencyContact>()
                     {
-                    new EmergencyContact
-                    {
-                        Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
-                        Relationship = "Parent",
-                        PhoneNumber = MakeRandomPhoneNumber(),
-                        Email="test@fake.net",
-                        Notes = "Only available when the sun is not out due to vampirism."
-                    }
+                        new EmergencyContact
+                        {
+                            Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
+                            Relationship = "Parent",
+                            PhoneNumber = MakeRandomPhoneNumber(),
+                            Email="test@fake.net",
+                            Notes = "Only available when the sun is not out due to vampirism."
+                        }
                     },
                 specialNeeds: new List<string>(),
                 notes: new List<string>() { "" }
 
 
             );
+        }
+        
+        public static Instructor MakeRandomInstructor()
+        {
+            Instructor instructor = new Instructor()
+            {
+                LastSafeSportTestDate = MakeRandomDate(DateTime.Now.AddYears(-5), DateTime.Now),
+                LastBackgroundCheckDate = MakeRandomDate(DateTime.Now.AddYears(-5), DateTime.Now),
+                TimeSheet = new List<TimeSheetEntry> {  },
+                Progressions = new List<Progression> {
+                    MakeRandomKarateProgression()
+                },
+                Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
+                BirthDay = MakeRandomDate(
+                    minDate: new DateTime(1980, 1, 1, 10, 0, 0),
+                    maxDate: new DateTime(2020, 1, 1, 10, 0, 0)),
+                EmergencyContacts = new List<EmergencyContact>()
+                {
+                    new EmergencyContact
+                        {
+                            Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
+                            Relationship = "Parent",
+                            PhoneNumber = MakeRandomPhoneNumber(),
+                            Email="test@fake.net",
+                            Notes = "Only available when the sun is not out due to vampirism."
+                        }
+                    },
+            };
+            return instructor;
         }
     }
 }
