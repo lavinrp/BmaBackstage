@@ -18,26 +18,28 @@ namespace BmaBackstage.Domain.Entities.People
             List<string> specialNeeds,
             List<string> notes)
         {
-            Contracts = contracts;
-            SpecialNeeds = specialNeeds;
-            Notes = notes;
-            Progressions = progressions;
+            m_contracts= contracts;
+            m_specialNeeds = specialNeeds;
+            m_notes = notes;
+            m_progressions = progressions;
             Name = name;
             BirthDay = birthDay;
-            EmergencyContacts = emergencyContacts;
+            m_emergencyContacts = emergencyContacts;
         }
 
-        public List<StudentContract> Contracts { get; set; }
-        public List<string> SpecialNeeds { get; set; }
-        public List<string> Notes { get; set; }
+        private readonly List<StudentContract> m_contracts = new();
+        private readonly List<string> m_specialNeeds = new();
+        private readonly List<string> m_notes = new();
+        private readonly List<Progression> m_progressions = new();
+        private readonly List<EmergencyContact> m_emergencyContacts= new();
 
-        public List<Progression> Progressions { get; set; }
-
-        public string Name { get; set; }
-
-        public DateTime BirthDay { get; set; }
-
-        public List<EmergencyContact> EmergencyContacts { get; set; }
+        public IReadOnlyCollection<StudentContract> Contracts => m_contracts;
+        public IReadOnlyCollection<string> SpecialNeeds => m_specialNeeds;
+        public IReadOnlyCollection<string> Notes => m_notes;
+        public IReadOnlyCollection<IProgression> Progressions => m_progressions;
+        public string Name { get; set; } = string.Empty;
+        public DateTime BirthDay { get; set; } = DateTime.MinValue;
+        public IReadOnlyCollection<EmergencyContact> EmergencyContacts => m_emergencyContacts;
 
         /// <summary>
         /// Unique identifier 

@@ -11,12 +11,12 @@
         /// <summary>
         /// Human readable name of the archetype.
         /// </summary>
-        string Name { get; set; }
+        string Name { get; }
 
         /// <summary>
         /// Typical stages of the typical progression
         /// </summary>
-        List<IProgressionStageArchetype> Stages { get; }
+        IReadOnlyCollection<IProgressionStageArchetype> Stages { get; }
 
         /// <summary>
         /// Create a progression based on this archetype

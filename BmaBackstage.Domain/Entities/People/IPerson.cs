@@ -18,6 +18,6 @@
         /// <summary>
         /// People who can be contacted in an emergency
         /// </summary>
-        List<EmergencyContact> EmergencyContacts { get; }
+        IReadOnlyCollection<EmergencyContact> EmergencyContacts { get; }
     }
 }

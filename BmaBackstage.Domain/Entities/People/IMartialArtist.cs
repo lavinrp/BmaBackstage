@@ -11,6 +11,6 @@ namespace BmaBackstage.Domain.Entities.People
         /// Progressions that this person is training in.
         /// </summary>
         /// <example>Karate Belts, Instructor Certification, etc...</example>
-        List<Progression> Progressions { get; }
+        IReadOnlyCollection<IProgression> Progressions { get; }
     }
 }

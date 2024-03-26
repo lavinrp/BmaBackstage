@@ -8,16 +8,16 @@
         /// <summary>
         /// All contracts on file for student
         /// </summary>
-        List<StudentContract> Contracts { get; set; }
+        IReadOnlyCollection<StudentContract> Contracts { get;}
 
         /// <summary>
         /// Special needs that should be understood by instructors
         /// </summary>
-        List<string> SpecialNeeds { get; set; }
+        IReadOnlyCollection<string> SpecialNeeds { get; }
 
         /// <summary>
         /// Misc notes that should be understood by instructors
         /// </summary>
-        List<string> Notes { get; set; }
+        IReadOnlyCollection<string> Notes { get; }
     }
 }

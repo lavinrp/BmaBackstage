@@ -8,6 +8,6 @@
         /// <summary>
         /// Record of recent hours worked
         /// </summary>
-        List<TimeSheetEntry> TimeSheet { get; }
+        IReadOnlyCollection<TimeSheetEntry> TimeSheet { get; }
     }
 }

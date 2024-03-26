@@ -12,21 +12,21 @@ namespace BmaBackstage.Domain.Entities
         /// </summary>
         /// <param name="instructor">The instructor leading the lesson</param>
         /// <param name="date">The date of the lesson</param>
-        public Lesson(IInstructor instructor, DateTime date)
-        {
-            Instructor = instructor;
-            Date = date;
-        }
+        //public Lesson(Instructor instructor, DateTime date)
+        //{
+        //    Instructor = instructor;
+        //    Date = date;
+        //}
 
         /// <summary>
         /// The instructor leading the lesson
         /// </summary>
-        public IInstructor Instructor { get; private set; }
+        public Instructor Instructor { get; set; }
 
         /// <summary>
         /// The date of the lesson
         /// </summary>
-        public DateTime Date { get; private set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Unique identifier 

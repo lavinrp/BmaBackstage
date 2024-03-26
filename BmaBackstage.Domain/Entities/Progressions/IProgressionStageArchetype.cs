@@ -1,4 +1,5 @@
 ﻿using BmaBackstage.Domain.Entities.Progressions.Requirements;
+using System.Collections.ObjectModel;
 
 namespace BmaBackstage.Domain.Entities.Progressions
 {
@@ -14,12 +15,12 @@ namespace BmaBackstage.Domain.Entities.Progressions
         /// <summary>
         /// Human readable name of the archetype
         /// </summary>
-        string Name { get; set; }
+        string Name { get; }
 
         /// <summary>
         /// Requirements for the typical progression stage
         /// </summary>
-        List<AbstractRequirement> Requirements { get; set; }
+        IReadOnlyCollection<AbstractRequirement> Requirements { get; }
 
         /// <summary>
         /// Create a ProgressionStage based on this archetype

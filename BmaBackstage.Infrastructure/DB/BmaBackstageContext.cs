@@ -14,7 +14,11 @@ namespace BmaBackstage.Infrastructure.DB
 {
     public class BmaBackstageContext : DbContext
     {
+        public DbSet<Instructor> Instructors { get; set; }
+
         public DbSet<Student> Students { get; set; }
+
+        public DbSet<Lesson> Lessons { get; set; }
 
         public DbSet<StudentContract> Contracts { get; set; }
 

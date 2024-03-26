@@ -10,7 +10,7 @@
         /// </summary>
         public string Name { get; set; } = string.Empty;
 
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         /// <summary>
         /// Checks if the requirement has been met

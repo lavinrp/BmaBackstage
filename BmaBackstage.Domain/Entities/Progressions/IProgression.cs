@@ -1,4 +1,6 @@
-﻿namespace BmaBackstage.Domain.Entities.Progressions
+﻿using System.Collections.ObjectModel;
+
+namespace BmaBackstage.Domain.Entities.Progressions
 {
     /// <summary>
     /// Any skill / rank that can be progressed through training
@@ -14,7 +16,7 @@
         /// Stages of the progression sorted so that the first stages appear at the start of the list
         /// </summary>
         /// <example>Stages[0]: WhiteBelt, Stages[1]: RedBelt, Stages[2]: OrangeBelt</example>
-        List<ProgressionStage> Stages { get; }
+        IReadOnlyCollection<ProgressionStage> Stages { get; }
 
         /// <summary>
         /// Index of current active stage

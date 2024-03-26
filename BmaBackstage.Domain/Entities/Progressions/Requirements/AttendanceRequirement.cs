@@ -5,6 +5,8 @@
     /// </summary>
     public class AttendanceRequirement : AbstractRequirement
     {
+        private readonly List<Lesson> m_lessions;
+
         /// <summary>
         /// Create an attendance requirement that will be passed when 
         /// the specified lessons count >= the required lesson count.
@@ -16,18 +18,18 @@
         {
             Name = name;
             RequiredLessonCount = requiredLessonCount;
-            Lessons = lessons;
+            m_lessions = lessons;
         }
 
         /// <summary>
         /// The number of lessons required to pass the requirement
         /// </summary>
-        public int RequiredLessonCount { get; private set; }
+        public int RequiredLessonCount { get; init; }
 
         /// <summary>
         /// The current lessons taken towards the requirement
         /// </summary>
-        public List<Lesson> Lessons { get; set; }
+        public IReadOnlyCollection<Lesson> Lessons => m_lessions;
 
         /// <summary>
         /// Checks if the attendance requirement has been met.
