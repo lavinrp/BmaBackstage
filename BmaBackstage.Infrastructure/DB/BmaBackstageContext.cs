@@ -1,7 +1,7 @@
-﻿using BmaBackstage.Domain.Entities;
-using BmaBackstage.Domain.Entities.People;
-using BmaBackstage.Domain.Entities.Progressions;
-using BmaBackstage.Domain.Entities.Progressions.Requirements;
+﻿using BmaBackstage.Infrastructure.DB.DataModel;
+using BmaBackstage.Infrastructure.DB.DataModel.People;
+using BmaBackstage.Infrastructure.DB.DataModel.Progressions;
+using BmaBackstage.Infrastructure.DB.DataModel.Progressions.Requirements;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -24,15 +24,15 @@ namespace BmaBackstage.Infrastructure.DB
 
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
 
-        //public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
 
         public DbSet<Progression> Progressions { get; set; }
 
         public DbSet<ProgressionStage> ProgressionStages { get; set; }
 
-        //public DbSet<AgeRequirement> AgeRequirements { get; set; }
+        public DbSet<AgeRequirement> AgeRequirements { get; set; }
 
-        //public DbSet<AttendanceRequirement> AttendanceRequirements { get; set; }
+        public DbSet<AttendanceRequirement> AttendanceRequirements { get; set; }
 
         public DbSet<ManualApprovalRequirement> ManualApprovalRequirements { get; set; }
 
@@ -48,7 +48,7 @@ namespace BmaBackstage.Infrastructure.DB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<AbstractRequirement>().ToTable("Requirements");
+            // modelBuilder.Entity<AbstractRequirement>().ToTable("Requirements");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

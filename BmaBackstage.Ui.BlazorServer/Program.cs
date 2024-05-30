@@ -1,5 +1,5 @@
 using BmaBackstage.Domain.Repositories;
-using BmaBackstage.Infrastructure.Repositories;
+using BmaBackstage.Infrastructure.Repositories.InMemory;
 using BmaBackstage.Ui.BlazorServer.Areas.Identity;
 using BmaBackstage.Ui.BlazorServer.Data;
 using Microsoft.AspNetCore.Components;

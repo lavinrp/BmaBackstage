@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.People
 {
-    internal class Student : Person
+    public class Student : Person
     {
         public List<StudentContract>? Contracts {get; set; }
         public List<string>? SpecialNeeds { get; set; }

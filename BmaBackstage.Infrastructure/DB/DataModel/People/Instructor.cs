@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.People
 {
-    internal class Instructor : Person
+    public class Instructor : Person
     {
         public DateTime? LastSafeSportTestDate { get; set; }
         public DateTime? LastBackgroundCheckDate { get; set; }

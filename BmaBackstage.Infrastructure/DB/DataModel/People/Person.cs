@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.People
 {
-    internal class Person
+    public class Person
     {
         /// <summary>
         /// Full name of the person

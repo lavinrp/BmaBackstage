@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.Progressions
 {
-    internal class ProgressionStage
+    public class ProgressionStage
     {
         public required string Name { get; set; }
         public required List<Requirement> Requirements { get; set; }

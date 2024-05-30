@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.Progressions.Requirements
 {
-    internal class AttendanceRequirement : Requirement
+    public class AttendanceRequirement : Requirement
     {
         public required List<Lesson> Lessons { get; set; }
         public required int RequiredLessonCount { get; set; }

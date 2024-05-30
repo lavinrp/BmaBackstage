@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.Progressions
 {
-    internal class ProgressionStageArchetype
+    public class ProgressionStageArchetype
     {
     }
 }

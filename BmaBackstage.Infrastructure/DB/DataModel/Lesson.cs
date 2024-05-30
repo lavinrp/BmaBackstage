@@ -5,7 +5,7 @@ namespace BmaBackstage.Infrastructure.DB.DataModel
     /// <summary>
     /// An individual training session
     /// </summary>
-    internal class Lesson
+    public class Lesson
     {
         /// <summary>
         /// The instructor leading the lesson

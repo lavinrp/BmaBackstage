@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.Progressions.Requirements
 {
-    internal class ManualApprovalRequirement : Requirement
+    public class ManualApprovalRequirement : Requirement
     {
         public required bool Passed { get ; set; }
     }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Contract for a student enrolled in any BMA class
     /// </summary>
-    internal class StudentContract
+    public class StudentContract
     {
         /// <summary>
         /// What the contract is for

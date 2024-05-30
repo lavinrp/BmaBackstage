@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BmaBackstage.Infrastructure.DB.DataModel.Progressions.Requirements
 {
-    internal class AgeRequirement : Requirement
+    public class AgeRequirement : Requirement
     {
         public required Person Person { get; set; }
         public required int RequiredAge { get; set; }

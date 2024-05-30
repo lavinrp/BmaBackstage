@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace BmaBackstage.Infrastructure.Repositories
+namespace BmaBackstage.Infrastructure.Repositories.InMemory
 {
     public class InMemoryStudentRepository : IStudentRepository
     {
@@ -57,7 +57,7 @@ namespace BmaBackstage.Infrastructure.Repositories
                 {
                     for (int j = 1; j <= m; j++)
                     {
-                        int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
+                        int cost = t[j - 1] == s[i - 1] ? 0 : 1;
                         int min1 = d[i - 1, j] + 1;
                         int min2 = d[i, j - 1] + 1;
                         int min3 = d[i - 1, j - 1] + cost;
@@ -75,7 +75,7 @@ namespace BmaBackstage.Infrastructure.Repositories
         {
             return m_students.Where(student => student.Name == name);
         }
-        
+
         public IStudent GetStudentById(Guid id)
         {
             return m_students.First(student => student.Id == id);
