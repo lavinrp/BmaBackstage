@@ -1,6 +1,9 @@
-﻿using BmaBackstage.Domain.Entities.People;
+﻿using BmaBackstage.Domain.Entities;
+using BmaBackstage.Domain.Entities.People;
+using BmaBackstage.Domain.Entities.Progressions;
 using BmaBackstage.Domain.Repositories;
 using BmaBackstage.Infrastructure.DB;
+using BmaBackstage.Infrastructure.DB.DataModel.People;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +23,15 @@ namespace BmaBackstage.Infrastructure.Repositories.EfCore
 
         public void AddStudent(IStudent student)
         {
-            throw new NotImplementedException();
+            m_context.Students.Add(
+                new DB.DataModel.People.Student
+                {
+                    Name = student.Name,
+                    BirthDay = student.BirthDay,
+                    EmergencyContacts = new List<DB.DataModel.EmergencyContact>(),
+                    Id = student.Id,
+                });
+            m_context.SaveChanges();
         }
 
         public void DeleteStudent(Guid studentId)
@@ -35,7 +46,24 @@ namespace BmaBackstage.Infrastructure.Repositories.EfCore
 
         public IEnumerable<IStudent> GetStudents()
         {
-            throw new NotImplementedException();
+            //dbStudent.Progressions?.Select(
+            //        dbProgression => new Progression(
+            //            dbProgression.Name,
+            //            dbProgression.Stages.Select(dbStage => new Domain.Entities.Progressions.ProgressionStage(
+            //                dbStage.Name,
+            //                new List<Domain.Entities.Progressions.Requirements.AbstractRequirement>() // dbStage.Requirements.Select(dbRequirement => new Requirement)
+            //                )).ToList(),
+            //            dbProgression.CurrentStageNumber)) ?? new List<Progression>();
+
+            return m_context.Students.Select(
+                dbStudent => new Domain.Entities.People.Student(
+                    dbStudent.Name,
+                    dbStudent.BirthDay,
+                    new List<Progression>(),
+                    new List<StudentContract>(),
+                    new List<EmergencyContact>(),
+                    new List<string>(), // dbStudent.SpecialNeeds.ToList(),
+                    new List<string>())); // dbStudent.Notes?.ToList() ?? new List<string>()));
         }
 
         public IEnumerable<IStudent> GetStudentsByFuzzyName(string fuzzyName)

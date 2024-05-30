@@ -41,19 +41,21 @@ namespace BmaBackstage.Infrastructure.DB
         public BmaBackstageContext()
         {
             var appdataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var bmaBackstageAppdataPath = Path.Combine(appdataPath, "BmaBackstage");
+            var bmaBackstageAppdataPath = Path.Combine(appdataPath, "BmaBackstage/BmaBackstage.db");
             DbPath = bmaBackstageAppdataPath;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // modelBuilder.Entity<AbstractRequirement>().ToTable("Requirements");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options
-            .UseSqlite($"Data Source={DbPath}");
-            // .UseSqlite(x=>x.MigrationsAssembly("BmaBackstage.Ui.BlazorServer"));
+        {
+            if (!options.IsConfigured)
+            {
+                options.UseSqlite($"Data Source={DbPath}");
+            }
+        }
     }
 }

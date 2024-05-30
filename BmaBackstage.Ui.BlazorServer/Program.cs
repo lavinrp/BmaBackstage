@@ -1,4 +1,6 @@
 using BmaBackstage.Domain.Repositories;
+using BmaBackstage.Infrastructure.DB;
+using BmaBackstage.Infrastructure.Repositories.EfCore;
 using BmaBackstage.Infrastructure.Repositories.InMemory;
 using BmaBackstage.Ui.BlazorServer.Areas.Identity;
 using BmaBackstage.Ui.BlazorServer.Data;
@@ -15,6 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+//builder.Services.AddDbContextFactory<BmaBackstageContext>(options => 
+//    options.UseSqlite());
+builder.Services.AddDbContextFactory<BmaBackstageContext>(options =>
+    options.UseSqlite());
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -22,6 +28,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddSingleton<IRepositoryFactory, EfCoreRepositoryFactory>();
 builder.Services.AddSingleton<IStudentRepository, InMemoryStudentRepository>();
 
 var app = builder.Build();

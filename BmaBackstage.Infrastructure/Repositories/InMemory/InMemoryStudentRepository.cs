@@ -168,17 +168,17 @@ namespace BmaBackstage.Infrastructure.Repositories.InMemory
             StringBuilder phoneNumberBuilder = new();
             for (int i = 0; i < 3; ++i)
             {
-                phoneNumberBuilder.Append(m_random.Next());
+                phoneNumberBuilder.Append(m_random.Next(0, 10));
             }
             phoneNumberBuilder.Append("-");
             for (int i = 0; i < 3; ++i)
             {
-                phoneNumberBuilder.Append(m_random.Next());
+                phoneNumberBuilder.Append(m_random.Next(0, 10));
             }
             phoneNumberBuilder.Append("-");
             for (int i = 0; i < 4; ++i)
             {
-                phoneNumberBuilder.Append(m_random.Next());
+                phoneNumberBuilder.Append(m_random.Next(0, 10));
             }
             return phoneNumberBuilder.ToString();
         }
@@ -248,8 +248,6 @@ namespace BmaBackstage.Infrastructure.Repositories.InMemory
                     },
                 specialNeeds: new List<string>(),
                 notes: new List<string>() { "" }
-
-
             );
         }
 
