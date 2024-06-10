@@ -162,7 +162,7 @@ namespace Test.BmaBackstage.TestUtilities
                             Relationship = "Parent",
                             PhoneNumber = MakeRandomPhoneNumber(),
                             Email="test@fake.net",
-                            Notes = "Only available when the sun is not out due to vampirism."
+                            Notes = new List<string> {"Only available when the sun is not out due to vampirism." }
                         }
                     },
                 specialNeeds: new List<string>(),
@@ -191,7 +191,7 @@ namespace Test.BmaBackstage.TestUtilities
                         Relationship = "Parent",
                         PhoneNumber = MakeRandomPhoneNumber(),
                         Email="test@fake.net",
-                        Notes = "Only available when the sun is not out due to vampirism."
+                        Notes = new List < string > { "Only available when the sun is not out due to vampirism." }
                     }
                 }
             );

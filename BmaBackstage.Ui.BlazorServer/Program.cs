@@ -29,7 +29,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<IRepositoryFactory, EfCoreRepositoryFactory>();
-builder.Services.AddSingleton<IStudentRepository, InMemoryStudentRepository>();
+// builder.Services.AddSingleton<IStudentRepository, InMemoryStudentRepository>();
 
 var app = builder.Build();
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BmaBackstage.Infrastructure.DB.DataModel
+﻿namespace BmaBackstage.Infrastructure.DB.DataModel
 {
     /// <summary>
     /// Records time worked in a single day
@@ -25,5 +19,34 @@ namespace BmaBackstage.Infrastructure.DB.DataModel
         /// Unique identifier 
         /// </summary>
         public required Guid Id { get; set; }
+
+        /// <summary>
+        /// Create a TimeSheetEntry entity from this persistence object
+        /// </summary>
+        /// <returns></returns>
+        public Domain.Entities.TimeSheetEntry ToEntity()
+        {
+            return new Domain.Entities.TimeSheetEntry
+            {
+                Day = Day,
+                Duration = Duration,
+                Id = Id
+            };
+        }
+
+        /// <summary>
+        /// Create a TimeSheetEntry persistence object from a TimeSheetEntry entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static TimeSheetEntry FromEntity(Domain.Entities.TimeSheetEntry entity)
+        {
+            return new TimeSheetEntry
+            {
+                Day = entity.Day,
+                Duration = entity.Duration,
+                Id = entity.Id
+            };
+        }
     }
 }

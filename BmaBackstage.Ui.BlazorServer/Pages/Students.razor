@@ -5,7 +5,6 @@
 @using BmaBackstage.Ui.BlazorServer.Pages;
 @using BmaBackstage.Ui.BlazorServer.Shared;
 
-@inject IStudentRepository StudentRepo;
 @inject IRepositoryFactory RepoFactory;
 
 <PageTitle>Students</PageTitle>
@@ -20,10 +19,5 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        // var efStudentRepo = RepoFactory.CreateStudentRepository();
-        // foreach (var student in StudentRepo.GetStudents())
-        // {
-        //     efStudentRepo.AddStudent(student);
-        // }
     }
 }

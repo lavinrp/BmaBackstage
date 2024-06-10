@@ -16,12 +16,12 @@ namespace BmaBackstage.Domain.Entities.Progressions.Requirements
         /// <param name="person">Person who must be the requiredAge</param>
         public AgeRequirement(string name, int requiredAge, Student person)
         {
-            m_person = person;
+            Person = person;
             Name = name;
             RequiredAge = requiredAge;
         }
 
-        private readonly Student m_person;
+        public IStudent Person { get; init; }
 
         /// <summary>
         /// Minimum age required to pass the requirement.
@@ -60,7 +60,7 @@ namespace BmaBackstage.Domain.Entities.Progressions.Requirements
 
             // Save today's date.
             var today = DateTime.Today;
-            var birthday = m_person.BirthDay.Date;
+            var birthday = Person.BirthDay.Date;
 
             // Calculate the age.
             var age = today.Year - birthday.Year;

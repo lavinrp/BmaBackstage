@@ -24,5 +24,21 @@ namespace BmaBackstage.Infrastructure.DB.DataModel.People
         public required List<EmergencyContact> EmergencyContacts { get; set; }
 
         public required Guid Id { get; set; }
+
+        /// <summary>
+        /// Create a persistence object from a IPerson entity.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public static Person FromEntity(Domain.Entities.People.IPerson entity)
+        {
+            return new Person
+            {
+                Name = entity.Name,
+                BirthDay = entity.BirthDay,
+                EmergencyContacts = entity.EmergencyContacts.Select(EmergencyContact.FromEntity).ToList(),
+                Id = entity.Id
+            };
+        }
     }
 }

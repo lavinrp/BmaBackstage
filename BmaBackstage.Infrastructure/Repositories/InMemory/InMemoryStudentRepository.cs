@@ -237,14 +237,14 @@ namespace BmaBackstage.Infrastructure.Repositories.InMemory
                 emergencyContacts:
                     new List<EmergencyContact>()
                     {
-                    new EmergencyContact
-                    {
-                        Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
-                        Relationship = "Parent",
-                        PhoneNumber = MakeRandomPhoneNumber(),
-                        Email="test@fake.net",
-                        Notes = "Only available when the sun is not out due to vampirism."
-                    }
+                        new EmergencyContact
+                        {
+                            Name = MakeRandomFirstName() + " " + MakeRandomLastName(),
+                            Relationship = "Parent",
+                            PhoneNumber = MakeRandomPhoneNumber(),
+                            Email="test@fake.net",
+                            Notes = new List<string> {"Only available when the sun is not out due to vampirism." }
+                        }
                     },
                 specialNeeds: new List<string>(),
                 notes: new List<string>() { "" }

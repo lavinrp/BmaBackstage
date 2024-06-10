@@ -17,6 +17,19 @@
         }
 
         /// <summary>
+        /// Create a requirement that is only passed after manual approval
+        /// </summary>
+        /// <param name="name">Human readable name of the requirement</param>
+        /// <param name="passed">Passed state of the requirement</param>
+        /// <param name="id">Id of the requirement</param>
+        public ManualApprovalRequirement(string name, bool passed, Guid id)
+        {
+            Name = name;
+            Passed = passed;
+            Id = id;
+        }
+
+        /// <summary>
         /// Passed state of the requirement
         /// </summary>
         public bool Passed { get; set; }

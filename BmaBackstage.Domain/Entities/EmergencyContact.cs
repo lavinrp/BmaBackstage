@@ -29,7 +29,7 @@
         /// <summary>
         /// Misc info about emergency contact
         /// </summary>
-        public string Notes { get; set; } = string.Empty;
+        public List<string> Notes { get; set; } = new();
 
         /// <summary>
         /// Unique identifier 
